@@ -20,3 +20,7 @@
 .spacer {
   flex: 1 1 auto;
 }
+
+.x-auto-margin {
+  margin: 0px auto;
+}
