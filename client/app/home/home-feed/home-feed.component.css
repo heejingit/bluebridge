@@ -1,0 +1,59 @@
+p {
+  margin: 12px auto 12px auto;
+}
+
+.mat-card {
+  width: 80%;
+  margin: auto;
+  box-shadow: none !important;
+}
+
+.mat-card .full-width {
+  width: 100%;
+}
+
+.mat-card-actions {
+  display: flex;
+}
+
+.content-footer {
+  display: flex;
+}
+
+.mat-card-avatar {
+  background-image: url('/assets/img/avataaars.png');
+  background-size: cover;
+  min-width: 50px;
+  min-height: 50px;
+  margin: auto;
+  border: 1px solid #3F51B5;
+}
+
+.child1 {
+  flex-basis: 10%;
+}
+
+.child2 {
+  flex-basis: 60%;
+}
+
+.child3 {
+  flex-basis: 10%;
+  margin-right: 20px;
+}
+
+.child4 {
+  flex-basis: 15%;
+}
+
+.mat-badge-content {
+  background: #4CAF50;
+
+}
+#mat-badge-content-3 {
+  background: #9E9E9E;
+}
+
+.mat-icon-button {
+  float: right;
+}

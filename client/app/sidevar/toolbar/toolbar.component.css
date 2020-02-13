@@ -1,0 +1,22 @@
+.mat-toolbar {
+  background-color: white;
+  width: 80%;
+  margin: auto;
+}
+
+.mat-toolbar-row {
+  padding: 0px !important;
+}
+
+.margin-right-15 {
+  margin-right: 15px;
+}
+
+.work-hour {
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

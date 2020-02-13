@@ -1,0 +1,92 @@
+<mat-card>
+  <mat-card-title>
+    <span style="color: #e53935;">[Notice] The meeting schedule on Friday has been changed</span>
+    <button mat-icon-button [matMenuTriggerFor]="menu1">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu1="matMenu">
+      <button mat-menu-item>
+        <mat-icon>edit</mat-icon>
+        <span>Edit</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>delete</mat-icon>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
+  </mat-card-title>
+  <mat-card-content>
+    <p>Due to the prior appointment set up, we had to change the schedule originally set up on Friday. It will happened next Monday. Thanks for your understanding.</p>
+    <div class="content-footer">
+      <p class="child1">February 6, 2020</p>
+      <div class="child2"></div>
+      <div class="child3">
+        <div mat-card-avatar matBadge="on" matBadgePosition="below after" matBadgeOverlap="true"></div>
+      </div>
+      <p class="child4">[Admin] John Doe</p>
+    </div>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+</mat-card>
+
+<mat-card>
+  <mat-card-title>
+    <span>New garbage can in the corner of the office</span>
+    <button mat-icon-button [matMenuTriggerFor]="menu3">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu3="matMenu">
+      <button mat-menu-item>
+        <mat-icon>edit</mat-icon>
+        <span>Edit</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>delete</mat-icon>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
+  </mat-card-title>
+  <mat-card-content>
+    <p>Management announced that they gave us a new garbage can! Don't throw your garbage on the floor anymore please!</p>
+    <div class="content-footer">
+      <p class="child1">February 6, 2020</p>
+      <div class="child2"></div>
+      <div class="child3">
+        <div mat-card-avatar matBadge="on" matBadgePosition="below after" matBadgeOverlap="true"></div>
+      </div>
+      <p class="child4">Woojin Oh</p>
+    </div>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+</mat-card>
+
+<mat-card>
+  <mat-card-title>
+    <span>New garbage can in the corner of the office</span>
+    <button mat-icon-button [matMenuTriggerFor]="menu2">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu2="matMenu">
+      <button mat-menu-item>
+        <mat-icon>edit</mat-icon>
+        <span>Edit</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>delete</mat-icon>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
+  </mat-card-title>
+  <mat-card-content>
+    <p>Management announced that they gave us a new garbage can! Don't throw your garbage on the floor anymore please!</p>
+    <div class="content-footer">
+      <p class="child1">February 6, 2020</p>
+      <div class="child2"></div>
+      <div class="child3">
+        <div mat-card-avatar matBadge="off" matBadgePosition="below after" matBadgeOverlap="true"></div>
+      </div>
+      <p class="child4">Woojin Oh</p>
+    </div>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+</mat-card>
