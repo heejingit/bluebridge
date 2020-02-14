@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
+import { AuthService } from './../auth/auth.service';
 import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-main-nav',
   templateUrl: './main-nav.component.html',
-  styleUrls: ['./main-nav.component.css']
+  styleUrls: ['./main-nav.component.css'],
 })
-export class MainNavComponent {
+export class MainNavComponent implements OnInit {
+  isLoggedIn$: Observable<boolean>;
   Breakpoints = {
     XSmall: '(max-width: 599.99px)',
     XSmallAndSmall: '(max-width: 959.99px)'
@@ -26,6 +28,14 @@ export class MainNavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private authService: AuthService) {}
+
+  ngOnInit() {
+    this.isLoggedIn$ = this.authService.isLoggedIn;
+  }
+
+  onLogout(){
+    this.authService.logout();
+  }
 
 }

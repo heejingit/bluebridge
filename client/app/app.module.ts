@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -22,6 +22,10 @@ import { ToolbarComponent } from './main-nav/toolbar/toolbar.component';
 import { HomeComponent } from './home/home.component';
 import { HomeInputComponent } from './home/home-input/home-input.component';
 import { HomeFeedComponent } from './home/home-feed/home-feed.component';
+import { SigninComponent } from './signin/signin.component';
+import { LoginBoxComponent } from './signin/login-box/login-box.component';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,8 @@ import { HomeFeedComponent } from './home/home-feed/home-feed.component';
     HomeFeedComponent,
     ToolbarComponent,
     MainNavComponent,
+    SigninComponent,
+    LoginBoxComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,13 +48,13 @@ import { HomeFeedComponent } from './home/home-feed/home-feed.component';
     BrowserAnimationsModule,
     LayoutModule,
     FlexLayoutModule,
-
+    ReactiveFormsModule,
     AppRoutingModule,
 
     // Material
     MaterialModule,
   ],
-  providers: [],
+  providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

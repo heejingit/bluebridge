@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
+import { SigninComponent } from './signin/signin.component';
+import { AuthGuard } from './auth/auth.guard';
 
 
 const routes: Routes = [
@@ -12,12 +14,13 @@ const routes: Routes = [
   },
   { 
     path: 'home', 
-    component: HomeComponent
+    component: HomeComponent,
+    // canActivate: [AuthGuard]
   },
-  // {
-  //   path: 'customers',
-  //   loadChildren: './customers/customers.module#CustomersModule'
-  // },
+  {
+    path: 'signin',
+    component: SigninComponent
+  },
   // {
   //   path: 'orders',
   //   loadChildren: './orders/orders.module#OrdersModule'
