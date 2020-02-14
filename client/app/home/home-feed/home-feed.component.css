@@ -16,10 +16,6 @@ p {
   display: flex;
 }
 
-.content-footer {
-  display: flex;
-}
-
 .mat-card-avatar {
   background-image: url('/assets/img/avataaars.png');
   background-size: cover;
@@ -27,23 +23,6 @@ p {
   min-height: 50px;
   margin: auto;
   border: 1px solid #3F51B5;
-}
-
-.child1 {
-  flex-basis: 10%;
-}
-
-.child2 {
-  flex-basis: 60%;
-}
-
-.child3 {
-  flex-basis: 10%;
-  margin-right: 20px;
-}
-
-.child4 {
-  flex-basis: 15%;
 }
 
 .mat-badge-content {
@@ -56,4 +35,8 @@ p {
 
 .mat-icon-button {
   float: right;
+}
+
+.font-red {
+  color: #e53935;
 }

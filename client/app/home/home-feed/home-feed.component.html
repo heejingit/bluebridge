@@ -1,100 +1,72 @@
-<mat-card>
-  <mat-card-title>
-    <span style="color: #e53935;">[Notice] The meeting schedule on Friday has been changed</span>
-    <button mat-icon-button [matMenuTriggerFor]="menu1">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menu1="matMenu">
-      <button mat-menu-item>
-        <mat-icon>edit</mat-icon>
-        <span>Edit</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon>delete</mat-icon>
-        <span>Delete</span>
-      </button>
-    </mat-menu>
-  </mat-card-title>
-  <mat-card-content>
-    <p>Due to the prior appointment set up, we had to change the schedule originally set up on Friday. It will happened next Monday. Thanks for your understanding.</p>
-    <div class="content-footer">
-      <p class="child1">February 6, 2020</p>
-      <div class="child2"></div>
-      <div class="child3">
-        <div mat-card-avatar matBadge="on" matBadgePosition="below after" matBadgeOverlap="true"></div>
-      </div>
-      <p class="child4">[Admin] John Doe</p>
-    </div>
-  </mat-card-content>
-  <mat-divider></mat-divider>
-</mat-card>
-
-<mat-card>
-  <mat-card-title>
-    <span>New garbage can in the corner of the office</span>
-    <button mat-icon-button [matMenuTriggerFor]="menu2">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menu2="matMenu">
-      <button mat-menu-item>
-        <mat-icon>edit</mat-icon>
-        <span>Edit</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon>delete</mat-icon>
-        <span>Delete</span>
-      </button>
-    </mat-menu>
-  </mat-card-title>
-  <mat-card-content>
-    <p>Management announced that they gave us a new garbage can! Don't throw your garbage on the floor anymore please!</p>
-    <div class="content-footer">
-      <p class="child1">February 6, 2020</p>
-      <div class="child2"></div>
-      <div class="child3">
-        <div mat-card-avatar matBadge="on" matBadgePosition="below after" matBadgeOverlap="true"></div>
-      </div>
-      <p class="child4">Woojin Oh</p>
-    </div>
-  </mat-card-content>
-  <mat-divider></mat-divider>
-</mat-card>
-
-<mat-card>
-  <mat-card-title>
-    <div
-      fxLayout="row"
-      fxLayoutAlign="start start">
-      <div fxFlex="80">
-        <span>New garbage can in the corner of the office</span>
-      </div>
-      <div fxFlex="20">
-        <button mat-icon-button [matMenuTriggerFor]="menu3">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu #menu3="matMenu">
-          <button mat-menu-item>
-            <mat-icon>edit</mat-icon>
-            <span>Edit</span>
+<div
+  *ngFor="let feed of feeds; let i = index">
+  <mat-card>
+    <mat-card-title>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start start">
+        <div fxFlex="80">
+          <span [ngClass]="{'font-red': feed.highPriority}">{{ feed.title }}</span>
+        </div>
+        <div fxFlex="20">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
           </button>
-          <button mat-menu-item>
-            <mat-icon>delete</mat-icon>
-            <span>Delete</span>
-          </button>
-        </mat-menu>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>edit</mat-icon>
+              <span>Edit</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>delete</mat-icon>
+              <span>Delete</span>
+            </button>
+          </mat-menu>
+        </div>
       </div>
-    </div>
-  </mat-card-title>
-  <mat-card-content>
-    <p>Management announced that they gave us a new garbage can! Don't throw your garbage on the floor anymore please!</p>
-    <div class="content-footer">
-      <p class="child1">February 6, 2020</p>
-      <div class="child2"></div>
-      <div class="child3">
-        <div mat-card-avatar matBadge="off" matBadgePosition="below after" matBadgeOverlap="true"></div>
+    </mat-card-title>
+    <mat-card-content>
+      <p>{{ feed.description }}</p>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="spcae-between start">
+        <div fxFlex="10%" fxFlex.xs="20%">
+          <p>{{ feed.date }}</p>
+        </div>
+        <div fxFlex="60%" fxFlex.xs="25%"></div>
+        <div fxFlex="15%" fxFlex.xs="30%">
+          <div mat-card-avatar matBadge="off" matBadgePosition="below after" matBadgeOverlap="true"></div>
+        </div>
+        <div fxFlex="15%" fxFlex.xs="25%">
+          <p>{{ feed.user }}</p>
+        </div>
       </div>
-      <p class="child4">Woojin Oh</p>
-    </div>
-  </mat-card-content>
-  <mat-divider></mat-divider>
-</mat-card>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+  </mat-card>
+</div>
+
+<!-- 
+<div class="content-footer">
+  <p class="child1">{{ feed.date }}</p>
+  <div class="child2"></div>
+  <div class="child3">
+    <div mat-card-avatar matBadge="off" matBadgePosition="below after" matBadgeOverlap="true"></div>
+  </div>
+  <p class="child4">{{ feed.user }}</p>
+</div> -->
+
+<!-- <div
+  fxLayout="row"
+  fxLayoutAlign="start start">
+  <div fxFlex="10">
+    <p>{{ feed.date }}</p>
+  </div>
+  <div fxFlex="60"></div>
+  <div fxFlex="10">
+    <div mat-card-avatar matBadge="off" matBadgePosition="below after" matBadgeOverlap="true"></div>
+  </div>
+  <div fxFlex="15">
+    <p>{{ feed.user }}</p>
+  </div>
+</div> -->
