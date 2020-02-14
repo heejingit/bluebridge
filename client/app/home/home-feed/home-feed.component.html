@@ -32,10 +32,10 @@
 <mat-card>
   <mat-card-title>
     <span>New garbage can in the corner of the office</span>
-    <button mat-icon-button [matMenuTriggerFor]="menu3">
+    <button mat-icon-button [matMenuTriggerFor]="menu2">
       <mat-icon>more_vert</mat-icon>
     </button>
-    <mat-menu #menu3="matMenu">
+    <mat-menu #menu2="matMenu">
       <button mat-menu-item>
         <mat-icon>edit</mat-icon>
         <span>Edit</span>
@@ -62,20 +62,28 @@
 
 <mat-card>
   <mat-card-title>
-    <span>New garbage can in the corner of the office</span>
-    <button mat-icon-button [matMenuTriggerFor]="menu2">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menu2="matMenu">
-      <button mat-menu-item>
-        <mat-icon>edit</mat-icon>
-        <span>Edit</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon>delete</mat-icon>
-        <span>Delete</span>
-      </button>
-    </mat-menu>
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start start">
+      <div fxFlex="80">
+        <span>New garbage can in the corner of the office</span>
+      </div>
+      <div fxFlex="20">
+        <button mat-icon-button [matMenuTriggerFor]="menu3">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu3="matMenu">
+          <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>Edit</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
   </mat-card-title>
   <mat-card-content>
     <p>Management announced that they gave us a new garbage can! Don't throw your garbage on the floor anymore please!</p>

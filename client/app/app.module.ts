@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // Material
 import { MaterialModule } from './material/material.module';
@@ -40,6 +41,7 @@ import { HomeFeedComponent } from './home/home-feed/home-feed.component';
     FormsModule,
     BrowserAnimationsModule,
     LayoutModule,
+    FlexLayoutModule,
 
     AppRoutingModule,
 
