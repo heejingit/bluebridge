@@ -4,6 +4,7 @@ import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@ang
   selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css'],
+  // encapsulation: ViewEncapsulation.Native
 })
 export class SigninComponent implements OnInit {
   @Output() change: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -11,11 +12,6 @@ export class SigninComponent implements OnInit {
   isLoggedIn: boolean = false;
 
   constructor() { }
-
-  loginStatusChange() {
-    this.isLoggedIn = false;
-    this.change.emit(this.isLoggedIn);  
-  }
 
   ngOnInit(): void {
   }
