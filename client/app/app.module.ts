@@ -26,6 +26,8 @@ import { SigninComponent } from './signin/signin.component';
 import { LoginBoxComponent } from './signin/login-box/login-box.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
+import { RegisterComponent } from './register/register.component';
+import { RegisterBoxComponent } from './register/register-box/register-box.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { AuthService } from './auth/auth.service';
     MainNavComponent,
     SigninComponent,
     LoginBoxComponent,
+    RegisterComponent,
+    RegisterBoxComponent,
   ],
   imports: [
     BrowserModule,
