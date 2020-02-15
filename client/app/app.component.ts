@@ -5,7 +5,7 @@ import { AuthGuard } from './auth/auth.guard';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [AuthGuard]
+  providers: [AuthGuard],
 })
 export class AppComponent {
   title = 'BlueBridge';
