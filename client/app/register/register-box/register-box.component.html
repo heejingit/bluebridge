@@ -11,7 +11,7 @@
             <mat-form-field class="full-width-input">
               <input matInput placeholder="First Name" formControlName="firstName" required>
               <mat-error *ngIf="isFieldInvalid('firstName')">
-                Please inform your first name
+                Please enter your first name
               </mat-error>
             </mat-form-field><br>
           </div>
@@ -22,7 +22,7 @@
             <mat-form-field class="full-width-input">
               <input matInput placeholder="Last Name" formControlName="lastName" required>
               <mat-error *ngIf="isFieldInvalid('lastName')">
-                Please inform your last name
+                Please enter your last name
               </mat-error>
             </mat-form-field><br>
           </div>
@@ -31,9 +31,9 @@
           <div class="username">
             <mat-icon>face</mat-icon>
             <mat-form-field class="full-width-input">
-              <input matInput placeholder="Username" formControlName="userName" required>
+              <input matInput placeholder="Email" formControlName="userName" required>
               <mat-error *ngIf="isFieldInvalid('userName')">
-                Please inform your user name
+                Please enter your email
               </mat-error>
             </mat-form-field><br>
           </div>
@@ -44,7 +44,7 @@
             <mat-form-field class="full-width-input">
               <input matInput type="password" placeholder="Password" formControlName="password" required>
               <mat-error *ngIf="isFieldInvalid('userName')">
-                Please inform your password
+                Please enter your password
               </mat-error>
             </mat-form-field>
           </div>

@@ -14,14 +14,14 @@ mat-form-field {
 }
 
 button {
-    margin-top: 50px;
-    width: 200px;
+    margin-top: 20px;
+    width: 220px;
 }
 
 h3 {
     letter-spacing: 0.2em;
     font-weight: bolder;
-    text-shadow: 0px 1px, 1px 0px, 1px 1px;
+    /* text-shadow: 0px 1px, 1px 0px, 1px 1px; */
 }
 
 h5 {
@@ -32,10 +32,20 @@ h5 {
 
 .mat-h5-2 {
     color: #6288c4;
-    margin-bottom: -30px;
+    letter-spacing: -0.04em;
+    font-weight: normal;
 }
 
 mat-icon {
     margin-right: 0.3em;
     margin-bottom: -0.3em;
+}
+
+.email-area {
+    margin-bottom: -52px;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: inherit;
 }
