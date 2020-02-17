@@ -6,6 +6,8 @@ import { SigninComponent } from './signin/signin.component';
 import { AuthGuard } from './auth/auth.guard';
 import { RegisterComponent } from './register/register.component';
 import { StaffComponent } from './user-menus/staff/staff.component';
+import { NewUserComponent } from './main-nav/sidevar/admin-button/new-user/new-user.component';
+import { NoteComponent } from './main-nav/sidevar/user-button/note/note.component';
 
 
 const routes: Routes = [
@@ -27,10 +29,17 @@ const routes: Routes = [
     path: 'register',
     component: RegisterComponent
   },
-
   {
     path: 'staff',
     component: StaffComponent
+  },
+  {
+    path: 'new-user',
+    component: NewUserComponent
+  },
+  {
+    path: 'note',
+    component: NoteComponent
   },
   // {
   //   path: 'orders',

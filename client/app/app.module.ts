@@ -29,6 +29,11 @@ import { AuthService } from './auth/auth.service';
 import { RegisterComponent } from './register/register.component';
 import { RegisterBoxComponent } from './register/register-box/register-box.component';
 import { StaffComponent } from './user-menus/staff/staff.component';
+import { NewUserComponent } from './main-nav/sidevar/admin-button/new-user/new-user.component';
+import { NoteComponent } from './main-nav/sidevar/user-button/note/note.component';
+import { NoteHistoryComponent } from './main-nav/sidevar/user-button/note-history/note-history.component';
+import { NoteInputComponent } from './main-nav/sidevar/user-button/note-input/note-input.component';
+import { NoteDatepickerComponent } from './main-nav/sidevar/user-button/note-datepicker/note-datepicker.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +52,11 @@ import { StaffComponent } from './user-menus/staff/staff.component';
     RegisterComponent,
     RegisterBoxComponent,
     StaffComponent,
+    NewUserComponent,
+    NoteComponent,
+    NoteHistoryComponent,
+    NoteInputComponent,
+    NoteDatepickerComponent,
   ],
   imports: [
     BrowserModule,

@@ -44,8 +44,3 @@ mat-icon {
 .email-area {
     margin-bottom: -52px;
 }
-
-a:link, a:visited {
-    text-decoration: none;
-    color: inherit;
-}
