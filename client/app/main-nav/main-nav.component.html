@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport *ngIf="isLoggedIn$ | async" 
+  <mat-sidenav #drawer class="sidenav" fixedInViewport 
       [attr.role]="(isXSmallAndSmall$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isXSmallAndSmall$ | async) ? 'over' : 'side'"
       [opened]="(isXSmallAndSmall$ | async) === false">
@@ -9,12 +9,13 @@
     <app-individual-button></app-individual-button>
   </mat-sidenav>
   <mat-sidenav-content>
-    <app-toolbar *ngIf="isLoggedIn$ | async">
+    <app-toolbar>
       <button
       *ngIf="isXSmallAndSmall$ | async"
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
+        (click)="drawer.toggle()"
         >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>

@@ -28,6 +28,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
 import { RegisterComponent } from './register/register.component';
 import { RegisterBoxComponent } from './register/register-box/register-box.component';
+import { StaffComponent } from './user-menus/staff/staff.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { RegisterBoxComponent } from './register/register-box/register-box.compo
     LoginBoxComponent,
     RegisterComponent,
     RegisterBoxComponent,
+    StaffComponent,
   ],
   imports: [
     BrowserModule,
