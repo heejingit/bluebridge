@@ -5,10 +5,12 @@
       <div
         fxLayout="row"
         fxLayoutAlign="start start">
-        <div fxFlex="80">
-          <span [ngClass]="{'font-red': feed.highPriority}">{{ feed.title }}</span>
+        <div fxFlex="95%" fxFlex.xs="90%">
+          <!-- <span [ngClass]="{'font-red': feed.highPriority}">{{ feed.title }}</span> -->
+          <span class="feed-notice" *ngIf="feed.highPriority">[Notice] </span>
+          <span class="feed-description">{{ feed.description }}</span>
         </div>
-        <div fxFlex="20">
+        <div fxFlex="5%" fxFlex.xs="10%">
           <button mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>more_vert</mat-icon>
           </button>
@@ -26,15 +28,15 @@
       </div>
     </mat-card-title>
     <mat-card-content>
-      <p>{{ feed.description }}</p>
       <div
         fxLayout="row"
         fxLayoutAlign="spcae-between start">
-        <div fxFlex="10%" fxFlex.xs="20%">
+        <div fxFlex="15%" fxFlex.xs="20%">
           <p>{{ feed.date }}</p>
         </div>
-        <div fxFlex="60%" fxFlex.xs="25%"></div>
+        <div fxFlex="55%" fxFlex.xs="25%"></div>
         <div fxFlex="15%" fxFlex.xs="30%">
+          <!-- !!!!!!!! need to change later !!!!!!! -->
           <div mat-card-avatar matBadge="off" matBadgePosition="below after" matBadgeOverlap="true"></div>
         </div>
         <div fxFlex="15%" fxFlex.xs="25%">
