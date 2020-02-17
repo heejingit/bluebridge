@@ -24,6 +24,7 @@
               "client/assets"
             ],
             "styles": [
+              "node_modules/angular-calendar/css/angular-calendar.css",
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "client/styles.css",
               "client/assets/fonts/customfonts.css"
@@ -90,6 +91,7 @@
               "client/assets"
             ],
             "styles": [
+              "node_modules/angular-calendar/css/angular-calendar.css",
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "client/styles.css",
               "client/assets/fonts/customfonts.css"

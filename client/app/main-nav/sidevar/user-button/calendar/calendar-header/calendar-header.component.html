@@ -1,0 +1,38 @@
+<div
+    class="header"
+    fxLayout="row"
+    fxLayoutAlign="start start">
+        <div fxFlex="40">
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                <mat-button-toggle value="previous">Previous month</mat-button-toggle>
+                <mat-button-toggle value="next">Next month</mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+
+        <div fxFlex="60">
+            <h1>Febraury</h1>
+        </div>
+
+        <div fxFlex="20">
+            <button mat-stroked-button color="primary">Add a new schedule</button>
+        </div>
+</div>
+
+<div
+    class="options"
+    fxLayout="row"
+    fxLayoutAlign="start start">
+        <div fxFlex="10">
+            <mat-icon color="accent">people_alt</mat-icon> Meeting
+        </div>
+
+        <div fxFlex="10">
+            <mat-icon color="primary">deck</mat-icon> Vacation
+        </div>
+
+        <div fxFlex="10">
+            <mat-icon>emoji_objects</mat-icon> Event
+        </div>
+
+</div>
+

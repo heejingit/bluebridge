@@ -31,9 +31,14 @@ import { RegisterBoxComponent } from './register/register-box/register-box.compo
 import { StaffComponent } from './user-menus/staff/staff.component';
 import { NewUserComponent } from './main-nav/sidevar/admin-button/new-user/new-user.component';
 import { NoteComponent } from './main-nav/sidevar/user-button/note/note.component';
-import { NoteHistoryComponent } from './main-nav/sidevar/user-button/note-history/note-history.component';
-import { NoteInputComponent } from './main-nav/sidevar/user-button/note-input/note-input.component';
-import { NoteDatepickerComponent } from './main-nav/sidevar/user-button/note-datepicker/note-datepicker.component';
+import { NoteHistoryComponent } from './main-nav/sidevar/user-button/note/note-history/note-history.component';
+import { NoteInputComponent } from './main-nav/sidevar/user-button/note/note-input/note-input.component';
+import { NoteDatepickerComponent } from './main-nav/sidevar/user-button/note/note-datepicker/note-datepicker.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalendarComponent } from './main-nav/sidevar/user-button/calendar/calendar.component';
+import { CalendarMainComponent } from './main-nav/sidevar/user-button/calendar/calendar-main/calendar-main.component';
+import { CalendarHeaderComponent } from './main-nav/sidevar/user-button/calendar/calendar-header/calendar-header.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +62,9 @@ import { NoteDatepickerComponent } from './main-nav/sidevar/user-button/note-dat
     NoteHistoryComponent,
     NoteInputComponent,
     NoteDatepickerComponent,
+    CalendarComponent,
+    CalendarMainComponent,
+    CalendarHeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +77,8 @@ import { NoteDatepickerComponent } from './main-nav/sidevar/user-button/note-dat
 
     // Material
     MaterialModule,
+
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
   ],
   providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]

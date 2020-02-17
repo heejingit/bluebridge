@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { StaffComponent } from './user-menus/staff/staff.component';
 import { NewUserComponent } from './main-nav/sidevar/admin-button/new-user/new-user.component';
 import { NoteComponent } from './main-nav/sidevar/user-button/note/note.component';
+import { CalendarComponent } from './main-nav/sidevar/user-button/calendar/calendar.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,11 @@ const routes: Routes = [
     path: 'note',
     component: NoteComponent
   },
+  {
+    path: 'calendar',
+    component: CalendarComponent
+  },
+  
   // {
   //   path: 'orders',
   //   loadChildren: './orders/orders.module#OrdersModule'
