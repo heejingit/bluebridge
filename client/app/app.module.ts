@@ -39,6 +39,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CalendarComponent } from './main-nav/sidevar/user-button/calendar/calendar.component';
 import { CalendarMainComponent } from './main-nav/sidevar/user-button/calendar/calendar-main/calendar-main.component';
 import { CalendarHeaderComponent } from './main-nav/sidevar/user-button/calendar/calendar-header/calendar-header.component';
+import { CalendarNewScheduleComponent } from './main-nav/sidevar/user-button/calendar/calendar-new-schedule/calendar-new-schedule.component';
+import { MeetingComponent } from './main-nav/sidevar/user-button/calendar/calendar-new-schedule/meeting/meeting.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,8 @@ import { CalendarHeaderComponent } from './main-nav/sidevar/user-button/calendar
     CalendarComponent,
     CalendarMainComponent,
     CalendarHeaderComponent,
+    CalendarNewScheduleComponent,
+    MeetingComponent,
   ],
   imports: [
     BrowserModule,
