@@ -41,6 +41,8 @@ import { CalendarMainComponent } from './main-nav/sidevar/user-button/calendar/c
 import { CalendarHeaderComponent } from './main-nav/sidevar/user-button/calendar/calendar-header/calendar-header.component';
 import { CalendarNewScheduleComponent } from './main-nav/sidevar/user-button/calendar/calendar-new-schedule/calendar-new-schedule.component';
 import { MeetingComponent } from './main-nav/sidevar/user-button/calendar/calendar-new-schedule/meeting/meeting.component';
+import { VacationComponent } from './main-nav/sidevar/user-button/calendar/calendar-new-schedule/vacation/vacation.component';
+import { EventComponent } from './main-nav/sidevar/user-button/calendar/calendar-new-schedule/event/event.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,8 @@ import { MeetingComponent } from './main-nav/sidevar/user-button/calendar/calend
     CalendarHeaderComponent,
     CalendarNewScheduleComponent,
     MeetingComponent,
+    VacationComponent,
+    EventComponent,
   ],
   imports: [
     BrowserModule,
