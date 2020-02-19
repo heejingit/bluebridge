@@ -10,7 +10,6 @@ import { HomeService } from './../home.services';
   styleUrls: ['./home-input.component.css']
 })
 export class HomeInputComponent implements OnInit {
-
   constructor(private homeService: HomeService) { }
 
   ngOnInit() {
@@ -24,6 +23,7 @@ export class HomeInputComponent implements OnInit {
     const newFeed = new Feed(feedDesc, feedDate, feedUser, feedHighPriority);
     this.homeService.addFeed(newFeed);
 
+    console.log(form);
     // reset all form input
     form.reset();
   }

@@ -21,7 +21,11 @@
         ngModel
         name="priorityInput">High priority</mat-checkbox>
       <div class="flex-spacer"></div>
-      <button mat-raised-button color="primary" type="submit">SAVE</button>
+      <button 
+        mat-raised-button 
+        color="primary" 
+        type="submit"
+        [disabled]="!f.value.descInput">SAVE</button>
     </mat-card-actions>
   </form>
   <mat-divider></mat-divider>
