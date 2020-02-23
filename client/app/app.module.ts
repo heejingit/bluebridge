@@ -43,6 +43,8 @@ import { CalendarNewScheduleComponent } from './main-nav/sidevar/user-button/cal
 import { MeetingComponent } from './main-nav/sidevar/user-button/calendar/calendar-new-schedule/meeting/meeting.component';
 import { VacationComponent } from './main-nav/sidevar/user-button/calendar/calendar-new-schedule/vacation/vacation.component';
 import { EventComponent } from './main-nav/sidevar/user-button/calendar/calendar-new-schedule/event/event.component';
+import { PermissionComponent } from './main-nav/sidevar/admin-button/permission/permission.component';
+import { PermissionDetailComponent } from './main-nav/sidevar/admin-button/permission/permission-detail/permission-detail.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +75,8 @@ import { EventComponent } from './main-nav/sidevar/user-button/calendar/calendar
     MeetingComponent,
     VacationComponent,
     EventComponent,
+    PermissionComponent,
+    PermissionDetailComponent,
   ],
   imports: [
     BrowserModule,

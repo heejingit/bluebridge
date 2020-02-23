@@ -10,6 +10,7 @@ import { NewUserComponent } from './main-nav/sidevar/admin-button/new-user/new-u
 import { NoteComponent } from './main-nav/sidevar/user-button/note/note.component';
 import { CalendarComponent } from './main-nav/sidevar/user-button/calendar/calendar.component';
 import { CalendarNewScheduleComponent } from './main-nav/sidevar/user-button/calendar/calendar-new-schedule/calendar-new-schedule.component';
+import { PermissionDetailComponent } from './main-nav/sidevar/admin-button/permission/permission-detail/permission-detail.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,10 @@ const routes: Routes = [
   {
     path: 'calendar-new',
     component: CalendarNewScheduleComponent
+  },
+  {
+    path: 'permission-detail',
+    component: PermissionDetailComponent
   },
   
   // {
