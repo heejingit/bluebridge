@@ -43,6 +43,53 @@ const colors: any = {
 export class CalendarMainComponent {
 
   viewDate: Date = new Date();
-  events = [];
+
+  events: CalendarEvent[] = [
+    {
+      title: 'Heejin Jeon on Vacation',
+      color: colors.blue,
+      start: new Date("February 13, 2020")
+    },
+
+    {
+      title: 'Woojin Oh on Vacation',
+      color: colors.blue,
+      start: new Date("February 14, 2020")
+    },
+
+    {
+      title: 'Injun Hwang on Vacation',
+      color: colors.blue,
+      start: new Date("February 18, 2020")
+    },
+
+    {
+      title: 'Web Development meeting at 9:30AM (Click to view all the participants)',
+      color: colors.red,
+      start: new Date("February 13, 2020")
+    },
+
+    {
+      title: 'Tour event with university students',
+      color: colors.yellow,
+      start: new Date("February 13, 2020")
+    }
+  ];
+
+  activeDayIsOpen: boolean;
+
+  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+    if (isSameMonth(date, this.viewDate)) {
+      if (
+        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
+        events.length === 0
+      ) {
+        this.activeDayIsOpen = false;
+      } else {
+        this.activeDayIsOpen = true;
+        this.viewDate = date;
+      }
+    }
+  }
 
 }

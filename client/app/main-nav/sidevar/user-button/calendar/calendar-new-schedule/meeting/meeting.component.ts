@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./meeting.component.css']
 })
 export class MeetingComponent implements OnInit {
+  
+
 
   constructor() { }
 
