@@ -49,8 +49,7 @@ export class PermissionDetailComponent implements OnInit {
   onDeleteRole(selectedItem) {
     selectedItem = this.selectedRoleValue;
     selectedItem.forEach(element => {
-      const foundIndex = this.roleNameList.findIndex(item => item === element);
-      console.log(foundIndex);
+      this.roleNameList.splice(this.roleNameList.findIndex(item => item === element), 1);
     })
   }
 }
