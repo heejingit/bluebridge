@@ -1,9 +1,9 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
+  <mat-sidenav #drawer class="sidenav" fixedInViewport 
       [attr.role]="(isXSmallAndSmall$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isXSmallAndSmall$ | async) ? 'over' : 'side'"
       [opened]="(isXSmallAndSmall$ | async) === false">
-    <app-sidevar-card></app-sidevar-card>
+    <app-sidevar-card ></app-sidevar-card>
     <app-user-button></app-user-button>
     <app-admin-button></app-admin-button>
     <app-individual-button></app-individual-button>
@@ -11,11 +11,12 @@
   <mat-sidenav-content>
     <app-toolbar>
       <button
+      *ngIf="isXSmallAndSmall$ | async"
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        *ngIf="isXSmallAndSmall$ | async">
+        >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span class="spacer"></span>
