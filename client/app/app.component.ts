@@ -1,19 +1,15 @@
-import { Component } from '@angular/core';
-import { AuthGuard } from './auth/auth.guard';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [AuthGuard],
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  title = 'BlueBridge';
+  title = "BlueBridge";
   isLoggedIn: boolean = true;
 
   LoginChange(event) {
     this.isLoggedIn = event;
   }
-
-
 }
