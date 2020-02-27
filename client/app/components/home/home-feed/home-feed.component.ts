@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Feed } from 'client/app/shared/model/feed.model';
-import { HomeService } from './../home.services';
+import { HomeService } from './../home.service';
 
 @Component({
   selector: 'app-home-feed',

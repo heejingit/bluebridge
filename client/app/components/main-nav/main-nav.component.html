@@ -35,15 +35,11 @@
           <span>Finish Work</span>
         </button>
         <button 
-          (click)="auth.login()"
-          *ngIf="!auth.loggedIn"
           mat-menu-item>
           <mat-icon>exit_to_app</mat-icon>
           <span>Sign In</span>
         </button>
         <button
-          (click)="auth.logout()"
-          *ngIf="auth.loggedIn"
           mat-menu-item>
           <mat-icon>exit_to_app</mat-icon>
           <span>Sign Out</span>

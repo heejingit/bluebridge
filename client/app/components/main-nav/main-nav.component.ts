@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
 // Services
-import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -30,6 +29,6 @@ export class MainNavComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver,
-              public auth: AuthService) {}
+              ) {}
 
 }

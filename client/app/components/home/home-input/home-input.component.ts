@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { Feed } from '../../shared/model/feed.model';
-import { HomeService } from './../home.services';
+import { Feed } from '../../../shared/model/feed.model';
+import { HomeService } from './../home.service';
 
 @Component({
   selector: 'app-home-input',

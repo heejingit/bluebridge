@@ -1,4 +1,4 @@
-import { Feed } from '../shared/model/feed.model';
+import { Feed } from '../../shared/model/feed.model';
 import { EventEmitter } from '@angular/core';
 
 export class HomeService {
