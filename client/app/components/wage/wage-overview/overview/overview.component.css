@@ -1,0 +1,40 @@
+.mat-card {
+  width: 100%;
+  box-shadow: none !important;
+  border: 1px solid #BDBDBD;
+  padding: 0px;
+}
+
+.mat-card-header {
+  justify-content: center;
+  min-height: 54px;
+  align-items: center;
+}
+
+.mat-card-title {
+  text-align: center;
+  font-size: calc(12px + 0.5vw);
+  margin-top: 10px;
+  color: #616161;
+}
+
+.mat-card-content {
+  /* font-size: 2rem; */
+  font-size: calc(12px + 1.5vw);
+  color: #424242;
+}
+
+.card-border-x {
+  border-right : 1px solid #BDBDBD;
+  border-left : 1px solid #BDBDBD;
+}
+
+.align-center{
+  text-align: center;
+}
+
+.title {
+  font-size: calc(12px + 1vw);
+  color: #424242;
+  margin: 10px 0px;
+}
