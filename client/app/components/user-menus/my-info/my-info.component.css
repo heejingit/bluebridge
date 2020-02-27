@@ -1,28 +1,12 @@
 table {
   width: 100%;
 }
-.example-card {
+.myinfo-card {
     max-width: 400px;
     margin: auto;
 
   }
   
-
-
-  .example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.example-full-width {
-  width: 100%;
-}
-
-
-.toolbar-spacer {
-  flex: 1 1 auto;
-}
 
 mat-card {
   margin: 16px 16px 0px 16px;
@@ -32,20 +16,6 @@ mat-sidenav-container {
   height: calc(100vh - 64px);
 }
 
-.toolbar-search, mat-placeholder {
-  color: white;
-}
-
-.mat-input-underline {
-    background-color: white;
-}
-
-
-@media (max-width: 600px) {
-    mat-sidenav-container {
-        height: calc(100vh - 56px)
-    }
-}
 
 .align-center {
   text-align: center;
@@ -60,14 +30,6 @@ mat-sidenav-container {
     width: 100%;
     border: 1px;
     margin: auto;
-}
-
-/* .button {
-    padding: 70px 0;
-} */
-
-.test {
-  align-items: center;
 }
 
 .button {
