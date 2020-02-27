@@ -1,0 +1,63 @@
+<body class="container">
+
+
+    <div class="header">
+        <h3>You have selected</h3>
+        <h1>{{ name }}</h1>
+    </div>
+    
+    <div class="role-list">
+        <h5>Choose a role you want to give</h5>
+
+        <div
+            class="role-selector"
+            fxLayout="row"
+            fxLayoutAlign="start start">
+                <div fxFlex="80">
+                    <form>
+                        <mat-form-field>
+                          <mat-label>Role list</mat-label>
+                          <mat-select [(ngModel)]="selectedValue" name="role">
+                            <mat-option *ngFor="let role of roles" [value]="role.value">
+                              {{role.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                    </form>
+                </div>
+
+                <div fxFlex="20">
+                    <button mat-stroked-button color="primary" class="add-button" (click)="onAddedRole($event)">Add</button>
+                </div>
+        </div>
+    </div>
+
+    
+
+    <div class="given-role">
+        
+        <h2>All roles '{{ name }}' has</h2>
+
+        <mat-card>
+
+            <mat-selection-list #list [(ngModel)]="selectedRoleValue" name="namelist">
+                <mat-list-option *ngFor="let namelist of roleNameList" [value]="namelist">
+                  {{namelist}}
+                </mat-list-option>
+            </mat-selection-list>
+        </mat-card>
+
+
+        <div
+            class="role-button-section">
+
+                  <button mat-raised-button color="accent" (click)="onDeleteRole($event)">Discard</button>
+
+
+                  <button mat-raised-button color="primary">Apply</button>
+        </div>
+
+    </div>
+
+
+</body>

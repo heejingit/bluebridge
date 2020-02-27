@@ -1,0 +1,46 @@
+mat-card {
+    width: 300px;
+    height: 470px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+mat-form-field {
+    width: 185px;
+    margin: 1.3em auto;
+    line-height: -0.3em;
+}
+
+button {
+    margin-top: 20px;
+    width: 220px;
+}
+
+h3 {
+    letter-spacing: 0.2em;
+    font-weight: bolder;
+    /* text-shadow: 0px 1px, 1px 0px, 1px 1px; */
+}
+
+h5 {
+    color: darkgray;
+    margin-bottom: -0.1em;
+    letter-spacing: 0.1em;
+}
+
+.mat-h5-2 {
+    color: #6288c4;
+    letter-spacing: -0.04em;
+    font-weight: normal;
+}
+
+mat-icon {
+    margin-right: 0.3em;
+    margin-bottom: -0.3em;
+}
+
+.email-area {
+    margin-bottom: -52px;
+}

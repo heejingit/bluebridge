@@ -2,6 +2,12 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const methodOverride = require('method-override');
+const cors = require('cors');
+
+// Config
+// const config = require('./server/config');
 
 /**
  * We create the app variable and initialize it to be an Express Application
@@ -12,6 +18,8 @@ const app = express();
 // Understanding how Body Parser works : https://medium.com/@adamzerner/how-bodyparser-works-247897a93b90
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(methodOverride('X-HTTP-Method-Override'));
+app.use(cors());
 
 // Point to static path to dist
 // __dirname is retrieved from javascript as the directory name of the location of this file.

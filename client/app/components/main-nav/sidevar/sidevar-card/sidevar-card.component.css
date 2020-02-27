@@ -1,0 +1,38 @@
+.mat-card {
+  max-width: 300px;
+  margin: auto;
+  margin-top: 50px;
+  box-shadow: none !important;
+}
+
+.mat-card-header {
+  height: 100px;
+  justify-content: center;
+}
+
+/* remove mat-card-header-text */
+:host /deep/ .mat-card-header-text {
+  margin: 0;
+}
+
+.mat-card-avatar {
+  background-image: url('/assets/img/avataaars.png');
+  background-size: cover;
+  min-width: 100px;
+  min-height: 100px;
+  margin: auto;
+  border: 1px solid #3F51B5;
+}
+
+.mat-card-content {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.flex-spacer {
+  width: 100%;
+}
+
+.mat-badge-content {
+  background: #4CAF50 !important;
+}

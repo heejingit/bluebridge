@@ -1,0 +1,49 @@
+mat-card {
+    width: 300px;
+    height: 470px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+mat-form-field {
+    width: 185px;
+    margin: 1.3em auto;
+    line-height: -0.3em;
+}
+
+button {
+    margin-top: 50px;
+    width: 200px;
+}
+
+h3 {
+    letter-spacing: 0.2em;
+    font-weight: bolder;
+    /* text-shadow: 0px 1px, 1px 0px, 1px 1px; */
+}
+
+h5 {
+    color: darkgray;
+    margin-bottom: -0.1em;
+    letter-spacing: 0.1em;
+}
+
+.mat-h5-2 {
+    color: #6288c4;
+    margin-bottom: -30px;
+}
+
+mat-icon {
+    margin-right: 0.3em;
+    margin-bottom: -0.3em;
+}
+
+.first-name, .last-name, .password {
+    margin-bottom: -30px;
+}
+
+.username {
+    margin-bottom: -45px;
+}
