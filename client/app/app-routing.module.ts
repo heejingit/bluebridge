@@ -11,6 +11,8 @@ import { NoteComponent } from "./components/main-nav/sidevar/user-button/note/no
 import { CalendarComponent } from "./components/main-nav/sidevar/user-button/calendar/calendar.component";
 import { CalendarNewScheduleComponent } from "./components/main-nav/sidevar/user-button/calendar/calendar-new-schedule/calendar-new-schedule.component";
 import { PermissionDetailComponent } from "./components/main-nav/sidevar/admin-button/permission/permission-detail/permission-detail.component";
+import { MyInfoComponent } from './components/user-menus/my-info/my-info.component';
+import { WageListOfStaffComponent } from './components/user-menus/wage-list-of-staff/wage-list-of-staff.component';
 
 const routes: Routes = [
   {
@@ -58,6 +60,14 @@ const routes: Routes = [
   {
     path: "permission-detail",
     component: PermissionDetailComponent
+  },
+    {
+    path: "wagelist",
+    component: WageListOfStaffComponent
+  },
+    {
+    path: "myinfo",
+    component: MyInfoComponent
   }
 
   // {

@@ -36,36 +36,37 @@
     <div class="container">
         
 
-         <mat-form-field appearance="fill">
+         <mat-form-field >
             <mat-label>Department</mat-label>
             <input matInput readonly value="{{ELEMENT_DATA[1].department}}">
         </mat-form-field>
 
         <br>
 
-         <mat-form-field appearance="fill">
+         <mat-form-field >
             <mat-label>Job Title</mat-label>
             <input matInput readonly value="{{ELEMENT_DATA[1].job}}">
         </mat-form-field>
 
         <br>
 
-        <div layout="row" layout-align="center stretch">
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <div fxFlex="70%" fxFlex.md="70%" fxFlex.sm="70%" fxFlex.xs="70%">
+                <mat-form-field class="big" >
+                    <mat-label>Condition</mat-label>
+                    <mat-select [(value)]="selected" >
+                        <mat-option value="{{condition_options[0]}}">{{condition_options[0]}}</mat-option>
+                        <mat-option value="{{condition_options[1]}}">{{condition_options[1]}}</mat-option>
+                        <mat-option value="{{condition_options[2]}}">{{condition_options[2]}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+        </div>
 
-            <mat-form-field class="small" appearance="fill">
-                <mat-label>Condition</mat-label>
-                <mat-select [(value)]="selected" >
-                    <mat-option value="{{condition_options[0]}}">{{condition_options[0]}}</mat-option>
-
-                    <mat-option value="{{condition_options[1]}}">{{condition_options[1]}}</mat-option>
-
-                    <mat-option value="{{condition_options[2]}}">{{condition_options[2]}}</mat-option>
-                </mat-select>
-
-            </mat-form-field>
-
+        <div fxFlex="30%" fxFlex.md="30%" fxFlex.sm="30%" fxFlex.xs="30%" class="align-center">
             <button mat-raised-button color="primary">Change</button>
         </div>
+
+    </div>
 
     </div>
 

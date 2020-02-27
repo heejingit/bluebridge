@@ -2,7 +2,7 @@ table {
   width: 100%;
 }
 .example-card {
-    max-width: 600px;
+    max-width: 400px;
     margin: auto;
 
   }
@@ -47,20 +47,29 @@ mat-sidenav-container {
     }
 }
 
+.align-center {
+  text-align: center;
+  margin: auto;
+}
+
 .mat-form-field {
     width: 100%;
-    border: 1px;
 }
-.mat-form-field.small {
-    width: 70%;
-    border: 1px;
-}
+
 .mat-select {
     width: 100%;
     border: 1px;
     margin: auto;
 }
 
-.button {
+/* .button {
     padding: 70px 0;
+} */
+
+.test {
+  align-items: center;
+}
+
+.button {
+  margin: auto 
 }

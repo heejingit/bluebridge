@@ -51,6 +51,8 @@ import { VacationComponent } from "./components/main-nav/sidevar/user-button/cal
 import { EventComponent } from "./components/main-nav/sidevar/user-button/calendar/calendar-new-schedule/event/event.component";
 import { PermissionComponent } from "./components/main-nav/sidevar/admin-button/permission/permission.component";
 import { PermissionDetailComponent } from "./components/main-nav/sidevar/admin-button/permission/permission-detail/permission-detail.component";
+import { MyInfoComponent } from './components/user-menus/my-info/my-info.component';
+import { WageListOfStaffComponent } from './components/user-menus/wage-list-of-staff/wage-list-of-staff.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +91,9 @@ import { PermissionDetailComponent } from "./components/main-nav/sidevar/admin-b
     VacationComponent,
     EventComponent,
     PermissionComponent,
-    PermissionDetailComponent
+    PermissionDetailComponent,
+    MyInfoComponent,
+    WageListOfStaffComponent
   ],
   imports: [
     BrowserModule,
