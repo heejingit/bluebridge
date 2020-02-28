@@ -13,19 +13,34 @@
             <div class="parti-container" fxFlex="20">
                 <mat-form-field appearance="fill" class="full-width">
                     <mat-label>Participants</mat-label>
-                    <input matInput placeholder="" value="">
+                    <input matInput placeholder="" [(ngModel)]="personName" name="personName">
                 </mat-form-field>
+
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Department</mat-label>
+                    <mat-select [(ngModel)]="departmentName" name="departmentName">
+                      <mat-option *ngFor="let department of departments" [value]="department.viewValue">
+                        {{department.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
             </div>
 
             <div class="parti-button" fxFlex="8">
-                <button mat-raised-button color="primary" class="invite-btn">Invite</button>
+                <button mat-raised-button color="primary" class="invite-btn" (click)="onInvite($event)">Invite</button>
             </div>
 
             <div class="list-container" fxFlex="60">
                 <mat-card>
-                    <p>Heejin Jeon</p>
-                    <p>Woojin Oh</p>
-                    <p>Injun Hwang</p>
+                    <mat-selection-list #list [(ngModel)]="selectedPeople" name="people-list">
+                        <mat-list-option *ngFor="let person of people" [value]="people-list">
+                          {{person}}
+                        </mat-list-option>
+                    </mat-selection-list>
+
+                    <div *ngIf="isPersonAdded">
+                        <button mat-raised-button color="accent" class="discard-btn" (click)="onDiscard($event)">Discard</button>
+                    </div>
                 </mat-card>
             </div>
         </div>

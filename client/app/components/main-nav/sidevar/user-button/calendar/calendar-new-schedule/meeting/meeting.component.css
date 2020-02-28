@@ -8,7 +8,7 @@
 
 .invite-btn {
     margin-left: -15px;
-    height: 60px;
+    height: 142px;
 }
 
 .where-area {
@@ -18,3 +18,9 @@
 .apply-btn {
     margin: auto auto auto 82.8%;
 }
+
+.mat-selection-list {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
