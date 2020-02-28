@@ -13,8 +13,8 @@
             <div class="parti-container" fxFlex="47">
                 <mat-form-field appearance="fill" class="example-full-width">
                     <mat-label>Start date</mat-label>
-                    <input matInput [matDatepicker]="picker">
-                    <mat-datepicker-toggle matSuffix [for]="picker">
+                    <input matInput [matDatepicker]="picker-vacation-start">
+                    <mat-datepicker-toggle matSuffix [for]="picker-vacation-start">
                       <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
                     </mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
@@ -24,8 +24,8 @@
             <div class="parti-container" fxFlex="46.5">
                 <mat-form-field appearance="fill" class="example-full-width">
                     <mat-label>End date</mat-label>
-                    <input matInput [matDatepicker]="picker">
-                    <mat-datepicker-toggle matSuffix [for]="picker">
+                    <input matInput [matDatepicker]="picker-vacation-end">
+                    <mat-datepicker-toggle matSuffix [for]="picker-vacation-end">
                       <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
                     </mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
