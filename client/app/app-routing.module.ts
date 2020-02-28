@@ -11,6 +11,7 @@ import { NoteComponent } from "./components/main-nav/sidevar/user-button/note/no
 import { CalendarComponent } from "./components/main-nav/sidevar/user-button/calendar/calendar.component";
 import { CalendarNewScheduleComponent } from "./components/main-nav/sidevar/user-button/calendar/calendar-new-schedule/calendar-new-schedule.component";
 import { PermissionDetailComponent } from "./components/main-nav/sidevar/admin-button/permission/permission-detail/permission-detail.component";
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -23,10 +24,10 @@ const routes: Routes = [
     component: HomeComponent
     // canActivate: [AuthGuard]
   },
-  {
-    path: "wage-overview",
-    component: WageOverviewComponent
-  },
+
+
+
+  // User accessible pages
   {
     path: "signin",
     component: SigninComponent
@@ -40,10 +41,6 @@ const routes: Routes = [
     component: StaffComponent
   },
   {
-    path: "new-user",
-    component: NewUserComponent
-  },
-  {
     path: "note",
     component: NoteComponent
   },
@@ -55,24 +52,33 @@ const routes: Routes = [
     path: "calendar-new",
     component: CalendarNewScheduleComponent
   },
+
+
+
+
+
+  // Admin only accessible pages
+  {
+    path: "wage-overview",
+    component: WageOverviewComponent
+  },
+  {
+    path: "new-user",
+    component: NewUserComponent
+  },
   {
     path: "permission-detail",
     component: PermissionDetailComponent
-  }
+  },
 
-  // {
-  //   path: 'orders',
-  //   loadChildren: './orders/orders.module#OrdersModule'
-  // },
-  // {
-  //   path: 'messages',
-  //   loadChildren: './messages/messages.module#MessagesModule'
-  // },
-  // {
-  //   path: '',
-  //   redirectTo: '',
-  //   pathMatch: 'full'
-  // }
+
+
+  
+  // Others
+  {
+    path: "**",
+    component: PageNotFoundComponent
+  }
 ];
 
 @NgModule({
