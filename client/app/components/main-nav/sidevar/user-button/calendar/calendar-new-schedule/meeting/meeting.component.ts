@@ -49,15 +49,24 @@ export class MeetingComponent implements OnInit {
   }
 
 
-  onDiscard(selectedItem) {
+  onDiscard(selectedItem: string[]): any {
     selectedItem = this.selectedPeople;
-    selectedItem.forEach(element => {
-      this.people.splice(this.selectedPeople.findIndex(item => item === element), 1);
 
-      if (this.people.length === 0) {
-        return this.isPersonAdded = false;
+    this.people.forEach(element => {
+      const foundIndex = selectedItem.findIndex(item => item === element);
+      const personIndex = this.people.findIndex(person => person === element);
+
+      console.log(foundIndex);
+      console.log(personIndex);
+
+      if(foundIndex !== -1) {
+        this.people.splice(personIndex, 1);
       }
     })
+
+    if (this.people.length === 0) {
+      return this.isPersonAdded = false;
+    }
   }
 
 }

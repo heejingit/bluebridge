@@ -6,9 +6,12 @@
     width: 88%;
 }
 
+.participants {
+    width: 100%;
+}
+
 .invite-btn {
-    margin-left: -15px;
-    height: 142px;
+    float: right;
 }
 
 .where-area {
@@ -22,5 +25,9 @@
 .mat-selection-list {
     max-height: 200px;
     overflow-y: scroll;
+}
+
+.people-list-card {
+    width: 97%;
 }
 

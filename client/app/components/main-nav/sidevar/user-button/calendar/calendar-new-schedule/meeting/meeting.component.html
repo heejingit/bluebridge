@@ -10,13 +10,13 @@
             fxLayout="row"
             fxLayoutAlign="start start">
 
-            <div class="parti-container" fxFlex="20">
-                <mat-form-field appearance="fill" class="full-width">
+            <mat-card class="parti-container" fxFlex="50">
+                <mat-form-field appearance="fill" class="participants">
                     <mat-label>Participants</mat-label>
                     <input matInput placeholder="" [(ngModel)]="personName" name="personName">
                 </mat-form-field>
 
-                <mat-form-field appearance="fill" class="full-width">
+                <mat-form-field appearance="fill" class="participants">
                     <mat-label>Department</mat-label>
                     <mat-select [(ngModel)]="departmentName" name="departmentName">
                       <mat-option *ngFor="let department of departments" [value]="department.viewValue">
@@ -24,14 +24,19 @@
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
-            </div>
 
-            <div class="parti-button" fxFlex="8">
-                <button mat-raised-button color="primary" class="invite-btn" (click)="onInvite($event)">Invite</button>
-            </div>
+                  <div class="parti-button">
+                    <button mat-raised-button color="primary" class="invite-btn" (click)="onInvite($event)">Invite</button>
+                </div>
+            </mat-card>
 
-            <div class="list-container" fxFlex="60">
-                <mat-card>
+            <span fxFlex="5"></span>
+
+            <div class="list-container" fxFlex="30">
+                <mat-card class="people-list-card">
+                    <mat-card-subtitle>
+                        List of participants
+                    </mat-card-subtitle>
                     <mat-selection-list #list [(ngModel)]="selectedPeople" name="people-list">
                         <mat-list-option *ngFor="let person of people" [value]="people-list">
                           {{person}}
