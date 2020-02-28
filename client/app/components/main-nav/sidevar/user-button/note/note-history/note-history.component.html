@@ -1,0 +1,48 @@
+<div
+  *ngFor="let note of notes; let i = index">
+  <mat-card>
+    <!-- [ngClass]="{'font-red': note.highPriority}" -->
+    <mat-card-title>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start start">
+        <div fxFlex="90">
+          <span [ngClass]="{'font-red': note.highPriority}">{{ note.description }}</span>
+        </div>
+        <div fxFlex="10">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>edit</mat-icon>
+              <span>Edit</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>delete</mat-icon>
+              <span>Delete</span>
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+    </mat-card-title>
+    <mat-card-content>
+      <!-- <p>{{ note.description }}</p> -->
+      <div
+        fxLayout="row"
+        fxLayoutAlign="spcae-between start">
+        <div fxFlex="10%" fxFlex.xs="20%">
+          <p>{{ note.date }}</p>
+        </div>
+        <!-- <div fxFlex="60%" fxFlex.xs="25%"></div>
+        <div fxFlex="15%" fxFlex.xs="30%">
+          <div mat-card-avatar matBadge="off" matBadgePosition="below after" matBadgeOverlap="true"></div>
+        </div>
+        <div fxFlex="15%" fxFlex.xs="25%">
+          <p>{{ note.user }}</p>
+        </div> -->
+      </div>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+  </mat-card>
+</div>

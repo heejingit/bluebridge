@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import url('https://fonts.googleapis.com/css?family=Poppins|Raleway|Ubuntu&display=swap');
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+
+@font-face {
+  font-family: "Raleway";
+  src: url('/assets/fonts/Raleway/Raleway-Light.ttf') format("truetype");
+  font-weight:300;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: "Raleway", "Helvetica Neue", sans-serif; }
+
+.mat-drawer-container {
+  background-color: white;
+}
