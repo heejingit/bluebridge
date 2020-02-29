@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require('express');
 const path = require('path');
 const http = require('http');
@@ -26,6 +28,13 @@ app.use(cors());
 // which should be ~/Angular-CLI-Fullstack
 app.use(express.static(path.join(__dirname, 'dist')));
 
+
+// DB Connection
+mongoose.connect('mongodb+srv://bluebridge:nscccapstone@blue-bridge-25rgb.mongodb.net/test', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to Mongo...'))
+  .catch(err => console.log(err));
+
+
 /**
  * Here we make a variable Routes equal to the routes.js file located in the server folder.
  * In the routes.js file we will make a function that returns all routes for the entire application
@@ -40,7 +49,7 @@ app.engine('html', require('ejs').renderFile);
 // And lastly we set the 'view engine' to be HTML
 app.set('view engine', 'html');
 
-const Routes = require('./server/routes'); // Import all route endpoints
+const Routes = require('./routes'); // Import all route endpoints
 Routes(app, __dirname);
 
 // Get port from environment and store in Express
