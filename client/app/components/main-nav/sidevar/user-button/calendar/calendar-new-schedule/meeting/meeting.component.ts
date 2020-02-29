@@ -11,16 +11,16 @@ interface departments {
   styleUrls: ['./meeting.component.css']
 })
 export class MeetingComponent implements OnInit {
-  people: string[] = [];
+  people: any[] = [];
   departments = [
+    {value: 0, viewValue: ''},
     {value: 1, viewValue: 'Web Development'},
     {value: 2, viewValue: 'Project Management'},
     {value: 3, viewValue: 'Data Analyst'}
   ];
-  selectedPeople: string[] = [];
+  selectedPeople: any;
   personName: string = '';
   departmentName: string = '';
-  isPersonAdded: boolean = false;
 
 
   constructor() { }
@@ -28,45 +28,37 @@ export class MeetingComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onInvite(event: any): any {
-    if (this.personName === '' && this.departmentName !== '') {
-      this.people.push(this.departmentName);
-      this.isPersonAdded = true;
-      return this.departmentName = '';
+  onInvite(event: any) {
+    if (this.personName === '' && this.departmentName === '') {
+      return alert('Please enter a person name or selet a department.')    
     }
 
-    if (this.personName !== '' && this.departmentName === '') {
+    if (this.personName === '' && this.departmentName !== '' && this.participantValidation()) {
+      this.people.push(this.departmentName);
+      this.departmentName = '';
+    }
+
+    if (this.personName !== '' && this.departmentName === '' && this.participantValidation()) {
       this.people.push(this.personName);
-      this.isPersonAdded = true;
-      return this.personName = '';
+      this.personName = '';
     }
 
     if (this.personName !== '' && this.departmentName !== '') {
-      return alert('Please empty either the person name or department')
+      alert('Please empty either the person name or department')
     }
 
-    return alert('Please enter a person name or selet a department.')
   }
 
 
-  onDiscard(selectedItem: string[]): any {
-    selectedItem = this.selectedPeople;
+  onDiscard(index: number) {
+    return this.people.splice(index, 1);
+  }
 
-    this.people.forEach(element => {
-      const foundIndex = selectedItem.findIndex(item => item === element);
-      const personIndex = this.people.findIndex(person => person === element);
-
-      console.log(foundIndex);
-      console.log(personIndex);
-
-      if(foundIndex !== -1) {
-        this.people.splice(personIndex, 1);
-      }
-    })
-
-    if (this.people.length === 0) {
-      return this.isPersonAdded = false;
+  participantValidation() {
+    if (this.people.some(element => element === this.personName || element === this.departmentName)) {
+      return alert('The inserted participant already exists.')
     }
+    return true;
   }
 
 }

@@ -22,12 +22,12 @@
     margin: auto auto auto 82.8%;
 }
 
-.mat-selection-list {
+.people-list-card {
+    width: 97%;
     max-height: 200px;
     overflow-y: scroll;
 }
 
-.people-list-card {
-    width: 97%;
+.remove-button {
+    margin: auto 0;
 }
-

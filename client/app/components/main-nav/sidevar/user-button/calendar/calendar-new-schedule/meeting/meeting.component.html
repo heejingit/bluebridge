@@ -13,7 +13,7 @@
             <mat-card class="parti-container" fxFlex="50">
                 <mat-form-field appearance="fill" class="participants">
                     <mat-label>Participants</mat-label>
-                    <input matInput placeholder="" [(ngModel)]="personName" name="personName">
+                    <input matInput placeholder="Please enter a participant's name" [(ngModel)]="personName" name="personName">
                 </mat-form-field>
 
                 <mat-form-field appearance="fill" class="participants">
@@ -37,15 +37,19 @@
                     <mat-card-subtitle>
                         List of participants
                     </mat-card-subtitle>
-                    <mat-selection-list #list [(ngModel)]="selectedPeople" name="people-list">
-                        <mat-list-option *ngFor="let person of people" [value]="people-list">
-                          {{person}}
-                        </mat-list-option>
-                    </mat-selection-list>
-
-                    <div *ngIf="isPersonAdded">
-                        <button mat-raised-button color="accent" class="discard-btn" (click)="onDiscard($event)">Discard</button>
+                    <div
+                        fxLayout="row wrap"
+                        fxLayoutAlign="start start"
+                        *ngFor="let person of people; let i = index"
+                        index="i">
+                        <div fxFlex="85%">
+                        <p>{{ person }}</p>
+                        </div>
+                        <div fxFlex="15%" class="remove-button">
+                           <i class="material-icons" (click)="onDiscard(i)" color="accent">cancel</i>
+                        </div>
                     </div>
+
                 </mat-card>
             </div>
         </div>
@@ -57,11 +61,11 @@
 
         <mat-form-field appearance="fill" class="example-full-width">
             <mat-label>When do you want to set up this schedule?</mat-label>
-            <input matInput [matDatepicker]="picker-meeting">
-            <mat-datepicker-toggle matSuffix [for]="picker-meeting">
+            <input matInput [matDatepicker]="meetingPicker">
+            <mat-datepicker-toggle matSuffix [for]="meetingPicker">
               <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
             </mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
+            <mat-datepicker #meetingPicker></mat-datepicker>
         </mat-form-field>      
 
         <p class="apply-btn-p"><button mat-raised-button color="primary" class="apply-btn">Apply</button></p>
