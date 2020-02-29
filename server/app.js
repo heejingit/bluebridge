@@ -26,7 +26,7 @@ app.use(cors());
 // Point to static path to dist
 // __dirname is retrieved from javascript as the directory name of the location of this file.
 // which should be ~/Angular-CLI-Fullstack
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'components')));
 
 
 // DB Connection
