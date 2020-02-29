@@ -1,20 +1,20 @@
 .container {
-    margin: 60px auto auto 120px;
+  margin: 60px auto auto 120px;
 }
 
 .mat-form-field {
-    width: 88%;
+  width: 88%;
 }
 
 .invite-btn {
-    margin-left: -15px;
-    height: 60px;
+  margin-left: -15px;
+  height: 60px;
 }
 
 .where-area {
-    margin: 30px auto auto auto;
+  margin: 30px auto auto auto;
 }
 
 .apply-btn {
-    margin: auto auto auto 82.8%;
+  margin: auto auto auto 82.8%;
 }

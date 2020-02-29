@@ -1,19 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from "@angular/core";
+import { NgForm } from "@angular/forms";
 
-import { Feed } from '../../../shared/model/feed.model';
-import { HomeService } from './../home.service';
+import { Feed } from "../../../shared/model/feed.model";
+import { HomeService } from "./../home.service";
 
 @Component({
-  selector: 'app-home-input',
-  templateUrl: './home-input.component.html',
-  styleUrls: ['./home-input.component.css']
+  selector: "app-home-input",
+  templateUrl: "./home-input.component.html",
+  styleUrls: ["./home-input.component.css"]
 })
 export class HomeInputComponent implements OnInit {
-  constructor(private homeService: HomeService) { }
+  constructor(private homeService: HomeService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onAddFeed(form: NgForm) {
     const feedDesc = form.value.descInput;

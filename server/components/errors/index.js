@@ -1,6 +1,6 @@
 module.exports[404] = function pageNotFound(req, res) {
-  // file path name, render engine will add the .html 
-  const viewFilePath = '404';
+  // file path name, render engine will add the .html
+  const viewFilePath = "404";
   // status code of error, 404 being page not found
   const statusCode = 404;
   // setup a result, not really needed but for future

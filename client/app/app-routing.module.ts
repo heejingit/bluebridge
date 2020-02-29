@@ -24,10 +24,6 @@ const routes: Routes = [
     // canActivate: [AuthGuard]
   },
   {
-    path: "wage-overview",
-    component: WageOverviewComponent
-  },
-  {
     path: "signin",
     component: SigninComponent
   },
@@ -58,6 +54,10 @@ const routes: Routes = [
   {
     path: "permission-detail",
     component: PermissionDetailComponent
+  },
+  {
+    path: "wage-overview",
+    component: WageOverviewComponent
   }
 
   // {

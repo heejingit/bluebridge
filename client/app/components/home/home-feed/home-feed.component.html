@@ -1,10 +1,7 @@
-<div
-  *ngFor="let feed of feeds; let i = index">
+<div *ngFor="let feed of feeds; let i = index">
   <mat-card>
     <mat-card-title>
-      <div
-        fxLayout="row"
-        fxLayoutAlign="start start">
+      <div fxLayout="row" fxLayoutAlign="start start">
         <div fxFlex="95%" fxFlex.xs="90%">
           <!-- <span [ngClass]="{'font-red': feed.highPriority}">{{ feed.title }}</span> -->
           <span class="feed-notice" *ngIf="feed.highPriority">[Notice] </span>
@@ -28,16 +25,19 @@
       </div>
     </mat-card-title>
     <mat-card-content>
-      <div
-        fxLayout="row"
-        fxLayoutAlign="spcae-between start">
+      <div fxLayout="row" fxLayoutAlign="spcae-between start">
         <div fxFlex="15%" fxFlex.xs="20%">
           <p>{{ feed.date }}</p>
         </div>
         <div fxFlex="55%" fxFlex.xs="25%"></div>
         <div fxFlex="15%" fxFlex.xs="30%">
           <!-- !!!!!!!! need to change later !!!!!!! -->
-          <div mat-card-avatar matBadge="off" matBadgePosition="below after" matBadgeOverlap="true"></div>
+          <div
+            mat-card-avatar
+            matBadge="off"
+            matBadgePosition="below after"
+            matBadgeOverlap="true"
+          ></div>
         </div>
         <div fxFlex="15%" fxFlex.xs="25%">
           <p>{{ feed.user }}</p>

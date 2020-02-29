@@ -1,7 +1,44 @@
-import { Feed } from '../../shared/model/feed.model';
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Subject } from "rxjs";
 
+import { Feed } from "../../shared/model/feed.model";
+
+@Injectable({
+  providedIn: "root"
+})
 export class HomeService {
+  /** 
+  // http request test
+  BASE_URL = "http://localhost:3000/api";
+  private feedStore: Feed[] = [];
+  private feedSubject = new Subject<Feed[]>();
+
+  feeds = this.feedSubject.asObservable();
+
+  constructor(private http: HttpClient) {
+    this.getFeeds();
+  }
+
+  getFeeds() {
+    this.http.get<Feed[]>(this.BASE_URL + "/feeds").subscribe(
+      response => {
+        console.log(response);
+        this.feedStore = response;
+        this.feedSubject.next(this.feedStore);
+      },
+      error => {
+        this.handleError("Unable to get feeds");
+      }
+    );
+  }
+
+  private handleError(error) {
+    console.error(error);
+  }
+  /////////////////////////
+  */
+
   feedsChanged = new EventEmitter<Feed[]>();
 
   private feeds: Feed[] = [
@@ -17,12 +54,7 @@ export class HomeService {
       "Woojin Oh",
       false
     ),
-    new Feed(
-      "I have so many trash",
-      "January 20, 2020",
-      "Injun Hwang",
-      false
-    ),
+    new Feed("I have so many trash", "January 20, 2020", "Injun Hwang", false)
   ];
 
   getFeeds() {
