@@ -1,39 +1,82 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const Joi = require('@hapi/joi');
+const joigoose = require('joigoose')(mongoose);
+Joi.objectId = require('joi-objectid')(Joi);
 
-const userSchema = new Schema({
-    _id: ObjectId,
+// const Schema = mongoose.Schema;
+
+const joiUserSchema = Joi.Object({
+    _id: Joi.objectId().required(),
     personalInfo: {
-      email: String,
-      password: String,
-      firstName: String,
-      lastName: String,
-      picture: String
+        email: Joi.string().email().required(),
+        password: Joi.string().required(),
+        firstName: Joi.string().min(1).max(50).required(),
+        lastName: Joi.string().min(1).max(30).required(),
+        picture: Joi.string()
     },
     employeeInfo: {
-      department: String,
-      position: String,
-      hourlyWage: Number,
-      roles: Array,
-      workInfo: {
-        lastLoginTime: Date, 
-        lastLogoutTime: Date,
-        workTime: [
-          {
-            date: Date,
-            workStartTime: Date,
-            workFinishTime: Date
-          }
-        ]
+        department: Joi.string(),
+        position: Joi.string(),
+        hourlyWage: Joi.number(),
+        roles: Joi.array().items(Joi.objectId()),
+        workInfo: {
+          lastLoginTime: Joi.date(), 
+          lastLogoutTime: Joi.date(),
+          workTime: [
+            {
+              date: Joi.date(),
+              workStartTime: Joi.date(),
+              workFinishTime: Joi.date()
+            }
+          ]
+        }
+      },
+      isLogin: Joi.boolean(),
+      condition: Joi.string(),
+      note: {                 // Personal note
+        description: Joi.string(),
+        date: Joi.date(),
+        isHighPriority: Joi.boolean()
       }
-    },
-    isLogin: Boolean,
-    condition: String,
-    note: {                 // Personal note
-      description: String,
-      date: Date,
-      isHighPriority: Boolean
-    }
-});
+})
+
+
+const mongooseUserSchema = joigoose.convert(joiUserSchema);
+
+
+// const userSchema = new Schema({
+//     _id: ObjectId,
+//     personalInfo: {
+//       email: String,
+//       password: String,
+//       firstName: String,
+//       lastName: String,
+//       picture: String
+//     },
+//     employeeInfo: {
+//       department: String,
+//       position: String,
+//       hourlyWage: Number,
+//       roles: Array,
+//       workInfo: {
+//         lastLoginTime: Date, 
+//         lastLogoutTime: Date,
+//         workTime: [
+//           {
+//             date: Date,
+//             workStartTime: Date,
+//             workFinishTime: Date
+//           }
+//         ]
+//       }
+//     },
+//     isLogin: Boolean,
+//     condition: String,
+//     note: {                 // Personal note
+//       description: String,
+//       date: Date,
+//       isHighPriority: Boolean
+//     }
+// });
   
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', mongooseUserSchema);
