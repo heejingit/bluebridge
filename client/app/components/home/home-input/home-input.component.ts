@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 
-import { Feed } from "../../../shared/model/feed.model";
+import { HomeFeed } from "../home-feed/home-feed.model";
 import { HomeService } from "./../home.service";
+import { DataStorageService } from "./../../../shared/data-storage.service";
 
 @Component({
   selector: "app-home-input",
@@ -10,20 +11,22 @@ import { HomeService } from "./../home.service";
   styleUrls: ["./home-input.component.css"]
 })
 export class HomeInputComponent implements OnInit {
-  constructor(private homeService: HomeService) {}
+  constructor(
+    private homeService: HomeService,
+    private dataStorageService: DataStorageService
+  ) {}
 
   ngOnInit() {}
 
   onAddFeed(form: NgForm) {
-    const feedDesc = form.value.descInput;
-    const feedDate = "February 14, 2020";
-    const feedUser = "Woojin Oh";
-    const feedHighPriority = form.value.priorityInput;
-    const newFeed = new Feed(feedDesc, feedDate, feedUser, feedHighPriority);
+    const author = "Woojin Oh";
+    const description = form.value.descInput;
+    const date = new Date();
+    const isHighPriority = form.value.priorityInput;
+    const newFeed = new HomeFeed(author, description, date, isHighPriority);
     this.homeService.addFeed(newFeed);
-
-    console.log(form);
     // reset all form input
     form.reset();
+    this.dataStorageService.storeFeeds();
   }
 }

@@ -4,7 +4,7 @@
       <div fxLayout="row" fxLayoutAlign="start start">
         <div fxFlex="95%" fxFlex.xs="90%">
           <!-- <span [ngClass]="{'font-red': feed.highPriority}">{{ feed.title }}</span> -->
-          <span class="feed-notice" *ngIf="feed.highPriority">[Notice] </span>
+          <span class="feed-notice" *ngIf="feed.isHighPriority">[Notice] </span>
           <span class="feed-description">{{ feed.description }}</span>
         </div>
         <div fxFlex="5%" fxFlex.xs="10%">
@@ -40,7 +40,7 @@
           ></div>
         </div>
         <div fxFlex="15%" fxFlex.xs="25%">
-          <p>{{ feed.user }}</p>
+          <p>{{ feed.author }}</p>
         </div>
       </div>
     </mat-card-content>
