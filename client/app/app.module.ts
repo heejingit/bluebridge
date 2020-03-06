@@ -53,6 +53,8 @@ import { EventComponent } from "./components/main-nav/sidevar/user-button/calend
 import { PermissionComponent } from "./components/main-nav/sidevar/admin-button/permission/permission.component";
 import { PermissionDetailComponent } from "./components/main-nav/sidevar/admin-button/permission/permission-detail/permission-detail.component";
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { MyInfoComponent } from './components/user-menus/my-info/my-info.component';
+import { WageListOfStaffComponent } from './components/user-menus/wage-list-of-staff/wage-list-of-staff.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +94,12 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     EventComponent,
     PermissionComponent,
     PermissionDetailComponent,
+<<<<<<< HEAD
     PageNotFoundComponent
+=======
+    MyInfoComponent,
+    WageListOfStaffComponent
+>>>>>>> 9409547350ca032776359d2557b6f856beddf852
   ],
   imports: [
     BrowserModule,

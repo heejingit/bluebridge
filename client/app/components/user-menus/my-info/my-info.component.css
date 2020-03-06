@@ -1,0 +1,37 @@
+table {
+  width: 100%;
+}
+.myinfo-card {
+    max-width: 400px;
+    margin: auto;
+
+  }
+  
+
+mat-card {
+  margin: 16px 16px 0px 16px;
+}
+
+mat-sidenav-container {
+  height: calc(100vh - 64px);
+}
+
+
+.align-center {
+  text-align: center;
+  margin: auto;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.mat-select {
+    width: 100%;
+    border: 1px;
+    margin: auto;
+}
+
+.button {
+  margin: auto 
+}

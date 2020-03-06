@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+<<<<<<< HEAD
 import { HomeComponent } from './components/home/home.component';
 import { WageOverviewComponent } from './components/wage/wage-overview/wage-overview.component';
 import { SigninComponent } from './components/signin/signin.component';
@@ -12,6 +13,20 @@ import { CalendarComponent } from './components/main-nav/sidevar/user-button/cal
 import { CalendarNewScheduleComponent } from './components/main-nav/sidevar/user-button/calendar/calendar-new-schedule/calendar-new-schedule.component';
 import { PermissionDetailComponent } from './components/main-nav/sidevar/admin-button/permission/permission-detail/permission-detail.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+=======
+import { HomeComponent } from "./components/home/home.component";
+import { WageOverviewComponent } from "./components/wage/wage-overview/wage-overview.component";
+import { SigninComponent } from "./components/signin/signin.component";
+import { RegisterComponent } from "./components/register/register.component";
+import { StaffComponent } from "./components/user-menus/staff/staff.component";
+import { NewUserComponent } from "./components/main-nav/sidevar/admin-button/new-user/new-user.component";
+import { NoteComponent } from "./components/main-nav/sidevar/user-button/note/note.component";
+import { CalendarComponent } from "./components/main-nav/sidevar/user-button/calendar/calendar.component";
+import { CalendarNewScheduleComponent } from "./components/main-nav/sidevar/user-button/calendar/calendar-new-schedule/calendar-new-schedule.component";
+import { PermissionDetailComponent } from "./components/main-nav/sidevar/admin-button/permission/permission-detail/permission-detail.component";
+import { MyInfoComponent } from './components/user-menus/my-info/my-info.component';
+import { WageListOfStaffComponent } from './components/user-menus/wage-list-of-staff/wage-list-of-staff.component';
+>>>>>>> 9409547350ca032776359d2557b6f856beddf852
 
 const routes: Routes = [
   {
@@ -66,6 +81,14 @@ const routes: Routes = [
   {
     path: 'wage-overview',
     component: WageOverviewComponent
+  },
+  {
+    path: "wagelist",
+    component: WageListOfStaffComponent
+  },
+    {
+    path: "myinfo",
+    component: MyInfoComponent
   },
 
   // Others
