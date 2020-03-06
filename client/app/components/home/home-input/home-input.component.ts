@@ -23,7 +23,13 @@ export class HomeInputComponent implements OnInit {
     const description = form.value.descInput;
     const date = new Date();
     const isHighPriority = form.value.priorityInput;
-    const newFeed = new HomeFeed(author, description, date, isHighPriority);
+    // const newFeed = new HomeFeed(author, description, date, isHighPriority); // 나중에 server쓸때 이걸로 바꾸자.
+    const newFeed = {
+      author: author,
+      description: description,
+      date: date,
+      isHighPriority: isHighPriority
+    };
     this.homeService.addFeed(newFeed);
     // reset all form input
     form.reset();

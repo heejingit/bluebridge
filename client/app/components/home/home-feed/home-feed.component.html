@@ -27,7 +27,7 @@
     <mat-card-content>
       <div fxLayout="row" fxLayoutAlign="spcae-between start">
         <div fxFlex="15%" fxFlex.xs="20%">
-          <p>{{ feed.date }}</p>
+          <p>{{ feed.date | date: "mediumDate" }}</p>
         </div>
         <div fxFlex="55%" fxFlex.xs="25%"></div>
         <div fxFlex="15%" fxFlex.xs="30%">

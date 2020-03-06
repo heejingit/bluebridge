@@ -6,21 +6,33 @@ const feeds = [
     author: "Woojin Oh",
     description:
       "Due to the prior appointment set up, we had to change the schedule originally set up on Friday. It will happened next Monday. Thanks for your understanding.",
-    date: "February 6, 2020",
+    date: new Date(2020, 1, 26),
     isHighPriority: true
   },
   {
     author: "Woojin Oh",
     description:
       "Management announced that they gave us a new garbage can! Don't throw your garbage on the floor anymore please!",
-    date: "January 26, 2020",
+    date: new Date(2020, 1, 17),
     isHighPriority: false
   },
   {
     author: "Injun Hwang",
     description: "I have so many trash",
-    date: "January 20, 2020",
+    date: new Date(2020, 1, 10),
     isHighPriority: false
+  },
+  {
+    author: "Heejin Jeon",
+    description: "I need some candy",
+    date: new Date(2020, 1, 15),
+    isHighPriority: false
+  },
+  {
+    author: "John Doe",
+    description: "Good morning",
+    date: new Date(2020, 2, 1),
+    isHighPriority: true
   }
 ];
 
