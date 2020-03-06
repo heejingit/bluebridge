@@ -52,6 +52,7 @@ import { VacationComponent } from "./components/main-nav/sidevar/user-button/cal
 import { EventComponent } from "./components/main-nav/sidevar/user-button/calendar/calendar-new-schedule/event/event.component";
 import { PermissionComponent } from "./components/main-nav/sidevar/admin-button/permission/permission.component";
 import { PermissionDetailComponent } from "./components/main-nav/sidevar/admin-button/permission/permission-detail/permission-detail.component";
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { PermissionDetailComponent } from "./components/main-nav/sidevar/admin-b
     VacationComponent,
     EventComponent,
     PermissionComponent,
-    PermissionDetailComponent
+    PermissionDetailComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

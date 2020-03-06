@@ -6,9 +6,12 @@
     width: 88%;
 }
 
+.participants {
+    width: 100%;
+}
+
 .invite-btn {
-    margin-left: -15px;
-    height: 60px;
+    float: right;
 }
 
 .where-area {
@@ -17,4 +20,14 @@
 
 .apply-btn {
     margin: auto auto auto 82.8%;
+}
+
+.people-list-card {
+    width: 97%;
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+.remove-button {
+    margin: auto 0;
 }
