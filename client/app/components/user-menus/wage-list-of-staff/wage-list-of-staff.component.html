@@ -1,27 +1,66 @@
+<body>
 
+    <div class="header">
+        <h2 mat-h2>
+            Wage Management
+        </h2>
+    </div>
 
-    <mat-card-content>
-        <table mat-table  [dataSource]="dataSource" class="mat-elevation-z8">
+    <div class="search-bar">
+        <mat-form-field>
+            <mat-label>Search staff directory</mat-label>
+            <input matInput (keyup)="applyFilter($event)" >
+          </mat-form-field>
+    </div>
 
-            <ng-container matColumnDef="Name">
-                <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+    <div class="table-area">
+                <table mat-table [dataSource]="datalist" class="mat-elevation-z8">
+
+                    {{ console.log('----------------> Logging') }}
+                    {{ console.log (datalist)}}
+
+            <!-- Avatar Column -->
+            <ng-container matColumnDef="position">
+          
+              <th mat-header-cell *matHeaderCellDef> </th>
+              <td mat-cell *matCellDef="let element">
+                  <div mat-card-avatar matBadge="on"
+                            matBadgePosition="below after"
+                            matBadgeOverlap="true">
+                  </div>
+              </td>
             </ng-container>
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                    </ng-container>
 
-             <ng-container matColumnDef="Department">
-                 <th mat-header-cell *matHeaderCellDef> Department </th>
-                 <td mat-cell *matCellDef="let element"> {{element.Department}} </td>
-             </ng-container>
+                    <ng-container matColumnDef="department">
+                        <th mat-header-cell *matHeaderCellDef> Department </th>
+                        <td mat-cell *matCellDef="let element"> {{element.department}} </td>
+                    </ng-container>
 
-             <ng-container matColumnDef="Job">
-                 <th mat-header-cell *matHeaderCellDef> Job Title </th>
-                 <td mat-cell *matCellDef="let element"> {{element.Job}} </td>
-             </ng-container>
+                    <ng-container matColumnDef="job">
+                        <th mat-header-cell *matHeaderCellDef> Job Title </th>
+                        <td mat-cell *matCellDef="let element"> {{element.job}} </td>
+                    </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
+                    <ng-container matColumnDef="wage">
+                        <th mat-header-cell *matHeaderCellDef> Wage </th>
+                        <td mat-cell *matCellDef="let element"> ${{element.wage}} </td>
+                    </ng-container>
 
-    </mat-card-content>
-<mat-card class="example-card">
-</mat-card>
+                    <ng-container matColumnDef="overview">
+                        <th mat-header-cell *matHeaderCellDef> Overview </th>
+                        <td  mat-cell *matCellDef="let element">
+                            <button mat-raised-button color="primary">Detail</button>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="wagelistColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: wagelistColumns;"></tr>
+
+                </table>
+
+    </div>
+</body>
