@@ -4,12 +4,13 @@ import {
   Output,
   EventEmitter,
   ViewEncapsulation
-} from "@angular/core";
+} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: "app-signin",
-  templateUrl: "./signin.component.html",
-  styleUrls: ["./signin.component.css"]
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.css']
   // encapsulation: ViewEncapsulation.Native
 })
 export class SigninComponent implements OnInit {

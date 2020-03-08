@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { authGuard } from './shared/auth/auth.guard';
+
 import { HomeComponent } from './components/home/home.component';
 import { WageOverviewComponent } from './components/wage/wage-overview/wage-overview.component';
 import { SigninComponent } from './components/signin/signin.component';
@@ -14,17 +16,63 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { PermissionDetailComponent } from './components/main-nav/sidevar/admin-button/permission/permission-detail/permission-detail.component';
 import { MyInfoComponent } from './components/user-menus/my-info/my-info.component';
 import { WageListOfStaffComponent } from './components/user-menus/wage-list-of-staff/wage-list-of-staff.component';
+import { PortalComponent } from './components/portal.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'portal/home',
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    component: HomeComponent
-    // canActivate: [AuthGuard]
+    path: 'portal',
+    // pathMatch: 'full',
+    component: PortalComponent,
+    canActivate: [authGuard],
+    children: [
+      {
+        path: 'home',
+        component: HomeComponent
+      },
+      {
+        path: 'staff',
+        component: StaffComponent
+      },
+      {
+        path: 'note',
+        component: NoteComponent
+      },
+      {
+        path: 'calendar',
+        component: CalendarComponent
+      },
+      {
+        path: 'calendar-new',
+        component: CalendarNewScheduleComponent
+      },
+
+      // Admin only accessible pages
+      {
+        path: 'wage-overview',
+        component: WageOverviewComponent
+      },
+      {
+        path: 'new-user',
+        component: NewUserComponent
+      },
+      {
+        path: 'permission-detail',
+        component: PermissionDetailComponent
+      },
+      {
+        path: 'wagelist',
+        component: WageListOfStaffComponent
+      },
+      {
+        path: 'myinfo',
+        component: MyInfoComponent
+      }
+    ]
   },
   // User accessible pages
   {
@@ -34,44 +82,6 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
-  },
-  {
-    path: 'staff',
-    component: StaffComponent
-  },
-  {
-    path: 'note',
-    component: NoteComponent
-  },
-  {
-    path: 'calendar',
-    component: CalendarComponent
-  },
-  {
-    path: 'calendar-new',
-    component: CalendarNewScheduleComponent
-  },
-
-  // Admin only accessible pages
-  {
-    path: 'wage-overview',
-    component: WageOverviewComponent
-  },
-  {
-    path: 'new-user',
-    component: NewUserComponent
-  },
-  {
-    path: 'permission-detail',
-    component: PermissionDetailComponent
-  },
-  {
-    path: 'wagelist',
-    component: WageListOfStaffComponent
-  },
-  {
-    path: 'myinfo',
-    component: MyInfoComponent
   },
 
   // Others

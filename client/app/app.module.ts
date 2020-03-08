@@ -55,6 +55,7 @@ import { PermissionDetailComponent } from './components/main-nav/sidevar/admin-b
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { MyInfoComponent } from './components/user-menus/my-info/my-info.component';
 import { WageListOfStaffComponent } from './components/user-menus/wage-list-of-staff/wage-list-of-staff.component';
+import { PortalComponent } from './components/portal.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,8 @@ import { WageListOfStaffComponent } from './components/user-menus/wage-list-of-s
     PermissionDetailComponent,
     PageNotFoundComponent,
     MyInfoComponent,
-    WageListOfStaffComponent
+    WageListOfStaffComponent,
+    PortalComponent
   ],
   imports: [
     BrowserModule,

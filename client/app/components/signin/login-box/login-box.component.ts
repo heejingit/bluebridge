@@ -1,20 +1,23 @@
-import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
-import { Observable } from "rxjs";
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
 
 import {
   AuthService,
   AuthResponseData
-} from "client/app/shared/auth/auth.service";
+} from 'client/app/shared/auth/auth.service';
 
 @Component({
-  selector: "app-login-box",
-  templateUrl: "./login-box.component.html",
-  styleUrls: ["./login-box.component.css"]
+  selector: 'app-login-box',
+  templateUrl: './login-box.component.html',
+  styleUrls: ['./login-box.component.css']
   // providers: [AuthService]
 })
 export class LoginBoxComponent implements OnInit {
+  isAuthnticated = false;
+  private userSub: Subscription;
+
   form: FormGroup; // {1}
   private formSubmitAttempt: boolean; // {2}
 
@@ -25,10 +28,19 @@ export class LoginBoxComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.userSub = this.authService.user.subscribe(user => {
+      // this.isAuthnticated = !user ? false : true;
+      this.isAuthnticated = !!user; // same as the above
+      console.log(this.isAuthnticated);
+      if (this.isAuthnticated) {
+        this.router.navigate(['portal/home']);
+      }
+    });
+
     this.form = this.fb.group({
       // {5}
-      email: ["", Validators.required],
-      password: ["", Validators.required]
+      email: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
@@ -52,7 +64,7 @@ export class LoginBoxComponent implements OnInit {
     authObs = this.authService.login(email, password);
 
     authObs.subscribe(resData => {
-      this.router.navigate(["/home"]);
+      this.router.navigate(['/portal/home']);
     });
 
     this.formSubmitAttempt = true; // {8}
