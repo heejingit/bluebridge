@@ -26,7 +26,7 @@ app.use(cors());
 // Point to static path to dist
 // __dirname is retrieved from javascript as the directory name of the location of this file.
 // which should be ~/Angular-CLI-Fullstack
-app.use(express.static(path.join(__dirname, 'components')));
+app.use(express.static(path.join(__dirname, './server/components')));
 
 
 // DB Connection
@@ -49,7 +49,7 @@ app.engine('html', require('ejs').renderFile);
 // And lastly we set the 'view engine' to be HTML
 app.set('view engine', 'html');
 
-const Routes = require('./routes'); // Import all route endpoints
+const Routes = require('./server/routes'); // Import all route endpoints
 Routes(app, __dirname);
 
 // Get port from environment and store in Express
