@@ -1,14 +1,14 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { Subscription } from "rxjs";
-import { DataStorageService } from "../../../shared/data-storage.service";
-import { HomeService } from "./../home.service";
-import { HomeFeed } from "./home-feed.model";
+import { Subscription } from 'rxjs';
+import { DataStorageService } from '../../../shared/data-storage.service';
+import { HomeService } from './../home.service';
+import { HomeFeed } from './home-feed.model';
 
 @Component({
-  selector: "app-home-feed",
-  templateUrl: "./home-feed.component.html",
-  styleUrls: ["./home-feed.component.css"]
+  selector: 'app-home-feed',
+  templateUrl: './home-feed.component.html',
+  styleUrls: ['./home-feed.component.css']
 })
 export class HomeFeedComponent implements OnInit, OnDestroy {
   feeds: HomeFeed[];

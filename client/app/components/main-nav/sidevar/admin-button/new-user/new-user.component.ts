@@ -16,9 +16,20 @@ interface Department {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Heejin Jeon', department: 'Web Development', job_title: 'Junior Web Developer', chat: true},
-  {position: 2, name: 'Woojin Oh', department: 'Web Development', job_title: 'Junior Web Developer', chat: true},
-
+  {
+    position: 1,
+    name: ' Lara Vel',
+    department: 'Web Development',
+    job_title: 'Junior Web Developer',
+    chat: true
+  },
+  {
+    position: 2,
+    name: 'React Native',
+    department: 'Web Development',
+    job_title: 'Junior Web Developer',
+    chat: true
+  }
 ];
 
 @Component({
@@ -27,14 +38,21 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./new-user.component.css']
 })
 export class NewUserComponent implements OnInit {
-  displayedColumns: string[] = ['select', 'position', 'name', 'department', 'job_title', 'chat'];
+  displayedColumns: string[] = [
+    'select',
+    'position',
+    'name',
+    'department',
+    'job_title',
+    'chat'
+  ];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
 
   departments: Department[] = [
-    {value: 1, viewValue: 'Web Development'},
-    {value: 2, viewValue: 'Data Analyst'},
-    {value: 3, viewValue: 'Project Management'}
+    { value: 1, viewValue: 'Web Development' },
+    { value: 2, viewValue: 'Data Analyst' },
+    { value: 3, viewValue: 'Project Management' }
   ];
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -44,24 +62,24 @@ export class NewUserComponent implements OnInit {
     return numSelected === numRows;
   }
 
-    /** Selects all rows if they are not all selected; otherwise clear selection. */
-    masterToggle() {
-      this.isAllSelected() ?
-          this.selection.clear() :
-          this.dataSource.data.forEach(row => this.selection.select(row));
-    }
-    
-    /** The label for the checkbox on the passed row */
-    checkboxLabel(row?: PeriodicElement): string {
-      if (!row) {
-        return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-      }
-        return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
-    }
-
-  constructor() { }
-
-  ngOnInit(): void {
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected()
+      ? this.selection.clear()
+      : this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: PeriodicElement): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+    }
+    return `${
+      this.selection.isSelected(row) ? 'deselect' : 'select'
+    } row ${row.position + 1}`;
+  }
+
+  constructor() {}
+
+  ngOnInit(): void {}
 }

@@ -27,16 +27,29 @@
     <mat-card-content>
       <div fxLayout="row" fxLayoutAlign="spcae-between start">
         <div fxFlex="15%" fxFlex.xs="20%">
-          <p>{{ feed.date | date: "mediumDate" }}</p>
+          <p>{{ feed.date | date: 'mediumDate' }}</p>
         </div>
         <div fxFlex="55%" fxFlex.xs="25%"></div>
         <div fxFlex="15%" fxFlex.xs="30%">
           <!-- !!!!!!!! need to change later !!!!!!! -->
           <div
             mat-card-avatar
-            matBadge="off"
+            matBadge="{{
+              feed.author === 'John Doe' || feed.author === 'Woojin Oh'
+                ? 'on'
+                : 'off'
+            }}"
             matBadgePosition="below after"
             matBadgeOverlap="true"
+            [ngStyle]="{
+              'background-image':
+                'url(/assets/img/avataaars-' +
+                feed.author.split(' ')[0] +
+                '.png)'
+            }"
+            [ngClass]="{
+              off: feed.author !== 'John Doe' && feed.author !== 'Woojin Oh'
+            }"
           ></div>
         </div>
         <div fxFlex="15%" fxFlex.xs="25%">
