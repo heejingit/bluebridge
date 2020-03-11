@@ -33,8 +33,13 @@
     "jsonwebtoken": "^8.5.1",
     "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
+    "joi-objectid": "^3.0.1",
+    "joigoose": "^7.0.0",
+    "method-override": "^3.0.0",
     "moment": "^2.24.0",
+    "mongoose": "^5.9.3",
     "ng2-charts": "^2.3.0",
+    "nodemon": "^2.0.2",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
