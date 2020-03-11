@@ -11,11 +11,34 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Heejin Jeon', department: 'Web Development', job_title: 'Junior Web Developer', chat: true},
-  {position: 2, name: 'Woojin Oh', department: 'Web Development', job_title: 'Junior Web Developer', chat: true},
-  {position: 3, name: 'Injun Hwang', department: 'Web Development', job_title: 'Junior Web Developer', chat: true},
-  {position: 4, name: 'John Doe', department: 'Web Development', job_title: 'Senior Web Developer', chat: false},
-
+  {
+    position: 1,
+    name: 'Heejin Jeon',
+    department: 'Web Development',
+    job_title: 'Junior Web Developer',
+    chat: true
+  },
+  {
+    position: 2,
+    name: 'Woojin Oh',
+    department: 'Web Development',
+    job_title: 'Junior Web Developer',
+    chat: true
+  },
+  {
+    position: 3,
+    name: 'Injun Hwang',
+    department: 'Web Development',
+    job_title: 'Junior Web Developer',
+    chat: true
+  },
+  {
+    position: 4,
+    name: 'John Doe',
+    department: 'Web Development',
+    job_title: 'Senior Web Developer',
+    chat: false
+  }
 ];
 
 @Component({
@@ -24,7 +47,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./staff.component.css']
 })
 export class StaffComponent implements OnInit {
-  displayedColumns: string[] = ['select', 'position', 'name', 'department', 'job_title', 'chat'];
+  displayedColumns: string[] = [
+    'select',
+    'position',
+    'name',
+    'department',
+    'job_title',
+    'chat'
+  ];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
 
@@ -42,24 +72,22 @@ export class StaffComponent implements OnInit {
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
-    this.isAllSelected() ?
-        this.selection.clear() :
-        this.dataSource.data.forEach(row => this.selection.select(row));
+    this.isAllSelected()
+      ? this.selection.clear()
+      : this.dataSource.data.forEach(row => this.selection.select(row));
   }
-  
+
   /** The label for the checkbox on the passed row */
   checkboxLabel(row?: PeriodicElement): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-      return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+    return `${
+      this.selection.isSelected(row) ? 'deselect' : 'select'
+    } row ${row.position + 1}`;
   }
 
+  constructor() {}
 
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

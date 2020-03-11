@@ -18,20 +18,23 @@ p {
 }
 
 .mat-card-avatar {
-  background-image: url('/assets/img/avataaars.png');
+  /* background-image: url('/assets/img/avataaars.png'); */
   background-size: cover;
   min-width: 50px;
   min-height: 50px;
   margin: auto;
-  border: 1px solid #3F51B5;
+  border: 1px solid #3f51b5;
 }
 
 .mat-badge-content {
-  background: #4CAF50;
-
+  background: #4caf50;
 }
-#mat-badge-content-3 {
-  background: #9E9E9E;
+/* #mat-badge-content-3 {
+  background: #9e9e9e;
+} */
+
+.off > span {
+  background-color: #9e9e9e;
 }
 
 .mat-icon-button {
@@ -44,7 +47,6 @@ p {
 
 .feed-description {
   font-size: 1rem;
-
 }
 .feed-notice {
   font-size: 1rem;

@@ -1,9 +1,13 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport 
-      [attr.role]="(isXSmallAndSmall$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isXSmallAndSmall$ | async) ? 'over' : 'side'"
-      [opened]="(isXSmallAndSmall$ | async) === false">
-    <app-sidevar-card ></app-sidevar-card>
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isXSmallAndSmall$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isXSmallAndSmall$ | async) ? 'over' : 'side'"
+    [opened]="(isXSmallAndSmall$ | async) === false"
+  >
+    <app-sidevar-card></app-sidevar-card>
     <app-user-button></app-user-button>
     <app-admin-button></app-admin-button>
     <app-individual-button></app-individual-button>
@@ -11,17 +15,19 @@
   <mat-sidenav-content>
     <app-toolbar>
       <button
-      *ngIf="isXSmallAndSmall$ | async"
+        *ngIf="isXSmallAndSmall$ | async"
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        >
+      >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span class="spacer"></span>
       <div *ngIf="!(isXSmall$ | async)">
-        <span class="work-hour margin-right-15">Hello John, You've been working today for 4hr 30min</span>
+        <span class="work-hour margin-right-15"
+          >Hello Woojin, You've been working today for 4hr 30min</span
+        >
       </div>
       <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>more_vert</mat-icon>
@@ -35,22 +41,23 @@
           <mat-icon>power_off</mat-icon>
           <span>Finish Work</span>
         </button>
-        <button 
+        <!-- <button 
           mat-menu-item>
           <mat-icon>exit_to_app</mat-icon>
           <span>Sign In</span>
-        </button>
-        <button
-          mat-menu-item>
+        </button> -->
+        <button mat-menu-item>
           <mat-icon>exit_to_app</mat-icon>
           <span>Sign Out</span>
         </button>
       </mat-menu>
     </app-toolbar>
-    <div class="test" *ngIf="(isXSmall$ | async)">
-      <span class="work-hour margin-right-15">Hello John,<br>You've been working today for 4hr 30min</span>
+    <div class="test" *ngIf="isXSmall$ | async">
+      <span class="work-hour margin-right-15"
+        >Hello Woojin,<br />You've been working today for 4hr 30min</span
+      >
     </div>
-   <!-- Add Content Here -->
-   <ng-content></ng-content>
+    <!-- Add Content Here -->
+    <ng-content></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>

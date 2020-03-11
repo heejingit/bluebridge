@@ -1,20 +1,23 @@
-import { Component, OnInit } from "@angular/core";
-import { BreakpointObserver } from "@angular/cdk/layout";
-import { Observable } from "rxjs";
-import { map, shareReplay } from "rxjs/operators";
+import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Observable, Subscription } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
+import { AuthService } from 'client/app/shared/auth/auth.service';
 
 // Services
 
 @Component({
-  selector: "app-main-nav",
-  templateUrl: "./main-nav.component.html",
-  styleUrls: ["./main-nav.component.css"]
+  selector: 'app-main-nav',
+  templateUrl: './main-nav.component.html',
+  styleUrls: ['./main-nav.component.css']
 })
 export class MainNavComponent implements OnInit {
-  isLoggedIn$: Observable<boolean>;
+  isAuthnticated = false;
+  private userSub: Subscription;
+
   Breakpoints = {
-    XSmall: "(max-width: 599.99px)",
-    XSmallAndSmall: "(max-width: 959.99px)"
+    XSmall: '(max-width: 599.99px)',
+    XSmallAndSmall: '(max-width: 959.99px)'
   };
 
   isXSmallAndSmall$: Observable<boolean> = this.breakpointObserver
@@ -31,9 +34,17 @@ export class MainNavComponent implements OnInit {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private authService: AuthService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userSub = this.authService.user.subscribe(user => {
+      // this.isAuthnticated = !user ? false : true;
+      this.isAuthnticated = !!user; // same as the above
+    });
+  }
 
   onLogout() {}
 }

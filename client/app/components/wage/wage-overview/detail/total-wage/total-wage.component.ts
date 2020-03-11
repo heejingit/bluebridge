@@ -13,26 +13,14 @@ export class TotalWageComponent implements OnInit {
   tax = 15;
   deductions = [
     {
-      'reason': 'A',
-      'amount': 100
+      reason: 'Cost of Training',
+      amount: 15
     },
     {
-      'reason': 'B',
-      'amount': 200
-    },
-    {
-      'reason': 'C',
-      'amount': 300
-    },
-    {
-      'reason': 'D',
-      'amount': 400
-    },
-    {
-      'reason': 'E',
-      'amount': 500
+      reason: 'Pension Plan',
+      amount: 10
     }
-  ]
+  ];
   totalDeductions = 0;
 
   totalHoursFloat = this.wageService.getTotalHoursFloat();
@@ -42,20 +30,20 @@ export class TotalWageComponent implements OnInit {
   taxForm: FormGroup;
   deductionsForm: FormGroup;
 
-  constructor(private wageService: WageService) { }
+  constructor(private wageService: WageService) {}
 
   ngOnInit(): void {
     this.wageForm = new FormGroup({
-      'hourlyWage': new FormControl(this.hourlyWage)
+      hourlyWage: new FormControl(this.hourlyWage)
     });
 
     this.taxForm = new FormGroup({
-      'tax': new FormControl(this.tax)
+      tax: new FormControl(this.tax)
     });
 
     this.deductionsForm = new FormGroup({
-      'reason': new FormControl(null),
-      'amount': new FormControl(null)
+      reason: new FormControl(null),
+      amount: new FormControl(null)
     });
 
     this.getTotalDeductions();
@@ -72,12 +60,10 @@ export class TotalWageComponent implements OnInit {
   }
 
   onDeductionsSubmit() {
-    this.deductions.push(
-      {
-        'reason': this.deductionsForm.value.reason,
-        'amount': parseFloat(this.deductionsForm.value.amount)
-      }
-    )
+    this.deductions.push({
+      reason: this.deductionsForm.value.reason,
+      amount: parseFloat(this.deductionsForm.value.amount)
+    });
     this.deductionsForm.reset();
     this.getTotalDeductions();
 
@@ -88,7 +74,7 @@ export class TotalWageComponent implements OnInit {
     this.totalDeductions = 0;
     this.deductions.map(x => {
       this.totalDeductions += x.amount;
-    })
+    });
   }
 
   onRemoveDeduction(index) {
