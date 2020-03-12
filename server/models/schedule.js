@@ -4,7 +4,7 @@ const Joi = require('@hapi/joi');
 const joigoose = require('joigoose')(mongoose);
 Joi.objectId = require('joi-objectid')(Joi);
 
-const joiScheduleSchema = Joi.Object({
+const joiScheduleSchema = Joi.object({
     Meeting: [
         {
           _id: Joi.objectId(),

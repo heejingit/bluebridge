@@ -4,7 +4,7 @@ const Joi = require('@hapi/joi');
 const joigoose = require('joigoose')(mongoose);
 Joi.objectId = require('joi-objectid')(Joi);
 
-const joiFeedSchema = Joi.Object({
+const joiFeedSchema = Joi.object({
     _id: Joi.objectId().required(),
     author: Joi.objectId().required(),
     description: Joi.string().required(),
@@ -22,4 +22,4 @@ const mongooseFeedSchema = joigoose.convert(joiFeedSchema);
 //     isHighPriority: Boolean
 // });
   
-module.exports = mongoose.model('Feed', mongooseFeedSchema);
+module.exports = mongoose.model('feed', mongooseFeedSchema, 'feed');

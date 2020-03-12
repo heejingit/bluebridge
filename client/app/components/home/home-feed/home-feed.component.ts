@@ -20,6 +20,7 @@ export class HomeFeedComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    console.log(this.feeds);
     this.subscription = this.homeService.feedsChanged.subscribe(
       (feeds: HomeFeed[]) => {
         this.feeds = feeds.sort((a, b) => {

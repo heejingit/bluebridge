@@ -5,7 +5,7 @@ Joi.objectId = require('joi-objectid')(Joi);
 
 // const Schema = mongoose.Schema;
 
-const joiUserSchema = Joi.Object({
+const joiUserSchema = Joi.object({
     _id: Joi.objectId().required(),
     personalInfo: {
         email: Joi.string().email().required(),

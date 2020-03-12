@@ -8,6 +8,10 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const cors = require('cors');
 
+require('./server/models/feed');
+require('./server/models/user');
+// require('./server/models/schedule');
+
 const app = express();
 
 //cors
@@ -39,7 +43,7 @@ app.set('view engine', 'html');
 mongoose
   .connect(
     'mongodb+srv://bluebridge:nscccapstone@blue-bridge-25rgb.mongodb.net/test',
-    { useNewUrlParser: true, useUnifiedTopology: true }
+    { useNewUrlParser: true, useUnifiedTopology: true, dbName: "bluebridge" }
   )
   .then(() => console.log('Connected to Mongo...'))
   .catch(err => console.log(err));
