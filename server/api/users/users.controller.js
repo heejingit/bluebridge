@@ -1,29 +1,43 @@
-"use strict";
-// const User = require('./user.model');
-const jwt = require("jsonwebtoken");
+'use strict';
+
+require('../../models/user');
+
+const mongoose = require('mongoose');
+const Users = mongoose.model('User');
+
+const jwt = require('jsonwebtoken');
 
 const users = [
   {
-    email: "woojin@nscc.ca",
-    password: "password",
-    firstName: "Woojin",
-    lastName: "Oh"
+    _id: '5e6515c2fc13ae3c1600049a',
+    email: 'woojin@nscc.ca',
+    password: 'password',
+    firstName: 'Woojin',
+    lastName: 'Oh'
   },
   {
-    email: "injun@nscc.ca",
-    password: "password",
-    firstName: "Injun",
-    lastName: "Hwang"
+    _id: '5e6515c2fc13ae3c16000549',
+    email: 'injun@nscc.ca',
+    password: 'password',
+    firstName: 'Injun',
+    lastName: 'Hwang'
   },
   {
-    email: "heejun@nscc.ca",
-    password: "password",
-    firstName: "Heejun",
-    lastName: "Jeon"
+    _id: '5e6515c2fc13ae3c160004b9',
+    email: 'heejin@nscc.ca',
+    password: 'password',
+    firstName: 'Heejin',
+    lastName: 'Jeon'
   }
 ];
 
 function listAllUsers(req, res) {
+  // Users.find({}, (err, users) => {
+  //   if (err) return res.status(400).send('Error');
+
+  //   res.send(users);
+  //   // feeds.push(feedData);
+  // });
   return res.json(users);
 }
 
@@ -47,7 +61,7 @@ function login(req, res) {
 
   let user = users.find(user => user.email == login.email);
   if (!user) {
-    return res.json({ success: false, message: "email or password incorrect" });
+    return res.json({ success: false, message: 'email or password incorrect' });
   }
 
   if (user.password == login.password) {
@@ -56,7 +70,7 @@ function login(req, res) {
 }
 
 function sendToken(user, res) {
-  var token = jwt.sign({ userId: user.id }, "123");
+  var token = jwt.sign({ userId: user.id }, '123');
   res.json({
     email: user.email,
     token: token,
