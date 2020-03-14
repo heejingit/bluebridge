@@ -19,12 +19,14 @@ export class HomeInputComponent implements OnInit {
   ngOnInit() {}
 
   onAddFeed(form: NgForm) {
+    const id = "5e6515c2fc13ae3c1600049a";
     const author = "Woojin Oh";
     const description = form.value.descInput;
     const date = new Date();
     const isHighPriority = form.value.priorityInput;
     // const newFeed = new HomeFeed(author, description, date, isHighPriority); // 나중에 server쓸때 이걸로 바꾸자.
     const newFeed = {
+      _id: id,
       author: author,
       description: description,
       date: date,
