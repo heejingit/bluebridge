@@ -10,7 +10,7 @@ const cors = require('cors');
 
 require('./server/models/feed');
 require('./server/models/user');
-// require('./server/models/schedule');
+require('./server/models/schedule');
 
 const app = express();
 

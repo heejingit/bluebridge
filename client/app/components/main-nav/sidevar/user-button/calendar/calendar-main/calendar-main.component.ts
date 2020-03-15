@@ -41,6 +41,9 @@ const colors: any = {
   styleUrls: ['./calendar-main.component.css']
 })
 export class CalendarMainComponent {
+  view: CalendarView = CalendarView.Month;
+
+  CalendarView = CalendarView;
 
   viewDate: Date = new Date();
 
@@ -90,6 +93,10 @@ export class CalendarMainComponent {
         this.viewDate = date;
       }
     }
+  }
+
+  closeOpenMonthViewDay() {
+    this.activeDayIsOpen = false;
   }
 
 }
