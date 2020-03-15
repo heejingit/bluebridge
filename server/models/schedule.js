@@ -45,4 +45,4 @@ const mongooseScheduleSchema = joigoose.convert(joiScheduleSchema);
     
 // });
   
-module.exports = mongoose.model('Schedule', mongooseScheduleSchema);
+module.exports = mongoose.model('schedule', mongooseScheduleSchema, 'schedule');

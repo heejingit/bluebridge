@@ -1,5 +1,8 @@
-import { Component, ChangeDetectionStrategy, ViewChild, TemplateRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
+import { Schedule } from '../../../../../../shared/schedule.model';
+import { ScheduleService } from '../../../../../../shared/schedule.service';
+import { DataStorageService } from '../../../../../../shared/data-storage.service';
 
 import {
   startOfDay,
@@ -40,7 +43,9 @@ const colors: any = {
   templateUrl: './calendar-main.component.html',
   styleUrls: ['./calendar-main.component.css']
 })
-export class CalendarMainComponent {
+export class CalendarMainComponent implements OnInit {
+  schedules: Schedule[];
+
   view: CalendarView = CalendarView.Month;
 
   CalendarView = CalendarView;
@@ -48,36 +53,48 @@ export class CalendarMainComponent {
   viewDate: Date = new Date();
 
   events: CalendarEvent[] = [
-    {
-      title: 'Heejin Jeon on Vacation',
-      color: colors.blue,
-      start: new Date("February 13, 2020")
-    },
+    // {
+    //   title: 'Heejin Jeon on Vacation',
+    //   color: colors.blue,
+    //   start: new Date("February 13, 2020")
+    // },
 
-    {
-      title: 'Woojin Oh on Vacation',
-      color: colors.blue,
-      start: new Date("February 14, 2020")
-    },
+    // {
+    //   title: 'Woojin Oh on Vacation',
+    //   color: colors.blue,
+    //   start: new Date("February 14, 2020")
+    // },
 
-    {
-      title: 'Injun Hwang on Vacation',
-      color: colors.blue,
-      start: new Date("February 18, 2020")
-    },
+    // {
+    //   title: 'Injun Hwang on Vacation',
+    //   color: colors.blue,
+    //   start: new Date("February 18, 2020")
+    // },
 
-    {
-      title: 'Web Development meeting at 9:30AM (Click to view all the participants)',
-      color: colors.red,
-      start: new Date("February 13, 2020")
-    },
+    // {
+    //   title: 'Web Development meeting at 9:30AM (Click to view all the participants)',
+    //   color: colors.red,
+    //   start: new Date("February 13, 2020")
+    // },
 
-    {
-      title: 'Tour event with university students',
-      color: colors.yellow,
-      start: new Date("February 13, 2020")
-    }
+    // {
+    //   title: 'Tour event with university students',
+    //   color: colors.yellow,
+    //   start: new Date("February 13, 2020")
+    // }
   ];
+
+  constructor(
+    private dataStorageService: DataStorageService,
+    private ScheduleService: ScheduleService
+    ) { }
+
+  ngOnInit() {
+    this.dataStorageService.fetchSchedule().subscribe();
+
+    console.log(this.schedules);
+
+  }
 
   activeDayIsOpen: boolean;
 
