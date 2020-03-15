@@ -9,7 +9,9 @@ import { Auth } from './auth.model';
 export interface AuthResponseData {
   userID: string;
   email: string;
-  userName: string;
+  firstName: string;
+  lastName: string;
+  picture: string;
   token: string;
   expiresIn: string;
 }
@@ -36,7 +38,9 @@ export class AuthService {
           this.handleAuthentication(
             resData.userID,
             resData.email,
-            resData.userName,
+            resData.firstName,
+            resData.lastName,
+            resData.picture,
             resData.token,
             +resData.expiresIn
           );
@@ -48,7 +52,9 @@ export class AuthService {
     const userData: {
       id: string;
       email: string;
-      userName: string;
+      firstName: string;
+      lastName: string;
+      picture: string;
       _token: string;
       _tokenExpirationDate: string;
     } = JSON.parse(localStorage.getItem('userData'));
@@ -59,7 +65,9 @@ export class AuthService {
     const loadedUser = new Auth(
       userData.id,
       userData.email,
-      userData.userName,
+      userData.firstName,
+      userData.lastName,
+      userData.picture,
       userData._token,
       new Date(userData._tokenExpirationDate)
     );
@@ -91,13 +99,23 @@ export class AuthService {
   private handleAuthentication(
     userID: string,
     email: string,
-    userName: string,
+    firstName: string,
+    lastName: string,
+    picture: string,
     token: string,
     expiresIn: number
   ) {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
 
-    const user = new Auth(userID, email, userName, token, expirationDate);
+    const user = new Auth(
+      userID,
+      email,
+      firstName,
+      lastName,
+      picture,
+      token,
+      expirationDate
+    );
     this.user.next(user);
     // this.autoLogout(expiresIn * 1000);
     localStorage.setItem('userData', JSON.stringify(user));

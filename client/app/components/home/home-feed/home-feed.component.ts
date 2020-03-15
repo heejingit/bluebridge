@@ -84,8 +84,8 @@ export class HomeFeedComponent implements OnInit, OnDestroy {
   }
 
   authCheck(feed) {
-    const UserData = JSON.parse(localStorage.getItem('userData'));
-    this.isOwnFeed = feed.author == UserData.userID ? true : false;
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    this.isOwnFeed = feed.author == userData.userID ? true : false;
     return this.isOwnFeed;
   }
 

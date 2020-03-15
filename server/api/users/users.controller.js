@@ -50,11 +50,12 @@ function login(req, res) {
 
 function sendToken(user, res) {
   const token = jwt.sign({ userID: user._id }, '123');
-  const name = user.personalInfo.firstName;
   res.json({
     userID: user._id,
     email: user.personalInfo.email,
-    userName: name,
+    firstName: user.personalInfo.firstName,
+    lastName: user.personalInfo.lastName,
+    picture: user.personalInfo.picture,
     token: token,
     expiresIn: 3600
   });
