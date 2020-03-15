@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-title>
     <p>
-      How are you {{ userData.userName }}? Share your thought with your
+      How are you {{ userData.firstName }}? Share your thought with your
       co-workers.
     </p>
   </mat-card-title>
@@ -13,7 +13,7 @@
       </mat-form-field> -->
       <mat-form-field appearance="fill" class="full-width">
         <mat-label
-          >What are you thinking now. {{ userData.userName }}?</mat-label
+          >What are you thinking now. {{ userData.firstName }}?</mat-label
         >
         <textarea ngModel name="descInput" matInput></textarea>
       </mat-form-field>
