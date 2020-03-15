@@ -77,11 +77,11 @@ export class CalendarMainComponent implements OnInit {
     //   start: new Date("February 13, 2020")
     // },
 
-    // {
-    //   title: 'Tour event with university students',
-    //   color: colors.yellow,
-    //   start: new Date("February 13, 2020")
-    // }
+    {
+      title: 'Tour event with university students',
+      color: colors.yellow,
+      start: new Date("2020-03-09T00:00:00.000Z")
+    }
   ];
 
   constructor(
@@ -92,7 +92,26 @@ export class CalendarMainComponent implements OnInit {
   ngOnInit() {
     this.dataStorageService.fetchSchedule().subscribe();
 
-    console.log(this.schedules);
+    const schedules = this.ScheduleService.getSchedules();
+
+    schedules.map(schedule => {
+     let setColor;
+     let editedSchedule;
+
+     if (schedule.type === "meeting") setColor = colors.red;
+     if (schedule.type === "vacation") setColor = colors.blue;
+     if (schedule.type === "event") setColor = colors.yellow;
+
+     editedSchedule = {
+       title: schedule.title,
+       color: setColor,
+       start: new Date(schedule.startDate)
+     }
+
+     return this.events.push(editedSchedule);
+
+    })
+
 
   }
 

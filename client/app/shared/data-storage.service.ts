@@ -62,19 +62,8 @@ export class DataStorageService {
 
   fetchSchedule() {
     return this.http.get<Schedule[]>('http://localhost:3000/api/schedules').pipe(
-
       tap(schedules => {
-        schedules.map(schedule => {
-          const StartDate = schedule.startDate.toDateString;
-          const EndDate = schedule.endDate.toDateString;
-
-          return {
-            ...schedule,
-            startDate: StartDate,
-            endDate: EndDate
-          }
-        })
-        return this.scheduleService.setSchedules(schedules);
+        this.scheduleService.setSchedules(schedules);
       })
     );
   }
