@@ -22,34 +22,56 @@ export class DataStorageService {
   fetchUsers() {
     return this.http.get<User[]>('http://localhost:3000/api/users').pipe(
       tap(users => {
-        console.log(users);
         this.userService.setUsers(users);
       })
     );
   }
 
-  storeFeeds() {
-    const feeds = this.homeService.getFeeds();
-    this.http.put('http://localhost:3000/api/feeds', feeds).subscribe();
+  storeFeed(feed) {
+    // const feeds = this.homeService.getFeeds();
+    // console.log(feeds);
+    // this.http.put('http://localhost:3000/api/feeds', feeds).subscribe();
+    const newFeed = feed;
+    this.http.post('http://localhost:3000/api/feeds', newFeed).subscribe(() => {
+      this.fetchFeeds().subscribe();
+    });
   }
+
+  deleteFeed(id) {
+    this.http.delete(`http://localhost:3000/api/feeds/${id}`).subscribe(() => {
+      this.fetchFeeds().subscribe();
+    });
+  }
+  // storeFeeds() {
+  //   const feeds = this.homeService.getFeeds();
+  //   console.log(feeds);
+  //   this.http.put('http://localhost:3000/api/feeds', feeds).subscribe(() => {
+  //     this.fetchFeeds().subscribe();
+  //   });
+  // }
 
   fetchFeeds() {
     return this.http.get<HomeFeed[]>('http://localhost:3000/api/feeds').pipe(
-      map(feeds => {
-        const users = this.userService.getUsers();
-        return feeds.map(feed => {
-          const user = users.filter(user => user._id === feed.author);
+      // map(feeds => {
+      //   const users = this.userService.getUsers(); // fetch users here!!!
+      //   console.log(users);
+      //   return feeds.map(feed => {
+      //     const user = users.filter(user => user._id === feed.author);
 
-          if (!user.length) return feed;
+      //     if (!user.length) return feed;
+      //     const userName =
+      //       user[0].personalInfo.firstName +
+      //       ' ' +
+      //       user[0].personalInfo.lastName;
 
-          const userName = user[0].firstName + ' ' + user[0].lastName;
-
-          return {
-            ...feed,
-            author: userName ? userName : 'Temp User'
-          };
-        });
-      }),
+      //     return {
+      //       ...feed,
+      //       authorName: userName ? userName : 'Temp User',
+      //       avatar: user[0].personalInfo.picture,
+      //       isLogin: user[0].isLogin
+      //     };
+      //   });
+      // }),
       tap(feeds => {
         this.homeService.setFeeds(feeds);
       })

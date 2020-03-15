@@ -5,12 +5,12 @@ const joigoose = require('joigoose')(mongoose);
 Joi.objectId = require('joi-objectid')(Joi);
 
 const joiFeedSchema = Joi.object({
-    _id: Joi.objectId().required(),
-    author: Joi.objectId().required(),
-    description: Joi.string().required(),
-    date: Joi.date().required(),
-    isHighPriority: Joi.boolean().required()
-})
+  // _id: Joi.objectId().required(),
+  author: Joi.objectId().required(),
+  description: Joi.string().required(),
+  date: Joi.date().required(),
+  isHighPriority: Joi.boolean().required()
+});
 
 const mongooseFeedSchema = joigoose.convert(joiFeedSchema);
 
@@ -21,5 +21,5 @@ const mongooseFeedSchema = joigoose.convert(joiFeedSchema);
 //     date: Date,
 //     isHighPriority: Boolean
 // });
-  
+
 module.exports = mongoose.model('feed', mongooseFeedSchema, 'feed');

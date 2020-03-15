@@ -17,6 +17,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.authService.autoLogin();
-    this.dataStorageService.fetchUsers().subscribe();
+    // this.dataStorageService.fetchUsers().subscribe();
   }
 }
