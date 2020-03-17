@@ -5,33 +5,14 @@ const joigoose = require('joigoose')(mongoose);
 Joi.objectId = require('joi-objectid')(Joi);
 
 const joiScheduleSchema = Joi.object({
-    Meeting: [
-        {
-          _id: Joi.objectId(),
-          purpose: Joi.string(),
-          participants: Joi.array().items(Joi.objectId()),
-          location: Joi.string(),
-          date: Joi.date()
-        },
-      ],
-      Vacation: [
-        {
-          _id: Joi.objectId(),
-          user: Joi.objectId(),
-          description: Joi.string(),
-          startDate: Joi.date(),
-          endDate: Joi.date(),
-          isApproved: Joi.boolean()
-        }
-      ],
-      Event: [
-        {
-          _id: joigoose.objectId(),
-          title: Joi.string(),
-          description: Joi.string(),
-          date: Joi.date()
-        }
-      ]
+      _id: Joi.objectId(),
+      type: Joi.string().required(),
+      user: Joi.array().items(Joi.objectId()),
+      startDate: Joi.date(),
+      endDate: Joi.date(),
+      isApproved: Joi.boolean(),
+      title: Joi.string(),
+      description: Joi.string()
 })
 
 const mongooseScheduleSchema = joigoose.convert(joiScheduleSchema);
@@ -64,4 +45,4 @@ const mongooseScheduleSchema = joigoose.convert(joiScheduleSchema);
     
 // });
   
-module.exports = mongoose.model('Schedule', mongooseScheduleSchema);
+module.exports = mongoose.model('schedule', mongooseScheduleSchema, 'schedule');

@@ -45,7 +45,6 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CalendarComponent } from './components/main-nav/sidevar/user-button/calendar/calendar.component';
 import { CalendarMainComponent } from './components/main-nav/sidevar/user-button/calendar/calendar-main/calendar-main.component';
-import { CalendarHeaderComponent } from './components/main-nav/sidevar/user-button/calendar/calendar-header/calendar-header.component';
 import { CalendarNewScheduleComponent } from './components/main-nav/sidevar/user-button/calendar/calendar-new-schedule/calendar-new-schedule.component';
 import { MeetingComponent } from './components/main-nav/sidevar/user-button/calendar/calendar-new-schedule/meeting/meeting.component';
 import { VacationComponent } from './components/main-nav/sidevar/user-button/calendar/calendar-new-schedule/vacation/vacation.component';
@@ -89,7 +88,6 @@ import { LoadingSpinnerComponenr } from './shared/loading-spinner/loading-spinne
     NoteDatepickerComponent,
     CalendarComponent,
     CalendarMainComponent,
-    CalendarHeaderComponent,
     CalendarNewScheduleComponent,
     MeetingComponent,
     VacationComponent,

@@ -9,6 +9,9 @@ import { UserService } from './user.service';
 import { HomeFeed } from '../components/home/home-feed/home-feed.model';
 import { User } from '../shared/user.model';
 
+import { Schedule } from './schedule.model';
+import { ScheduleService } from './schedule.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +19,8 @@ export class DataStorageService {
   constructor(
     private http: HttpClient,
     private homeService: HomeService,
-    private userService: UserService
+    private userService: UserService,
+    private scheduleService: ScheduleService
   ) {}
 
   fetchUsers() {
@@ -77,4 +81,13 @@ export class DataStorageService {
       })
     );
   }
+
+  fetchSchedule() {
+    return this.http.get<Schedule[]>('http://localhost:3000/api/schedules').pipe(
+      tap(schedules => {
+        this.scheduleService.setSchedules(schedules);
+      })
+    );
+  }
+
 }
