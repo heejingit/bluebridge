@@ -5,9 +5,15 @@
       matBadge="on"
       matBadgePosition="below after"
       matBadgeOverlap="true"
+      [ngStyle]="{
+        'background-image':
+          'url(/assets/img/avatar/' + activeUserPicture + '.png)'
+      }"
     ></div>
   </mat-card-header>
   <mat-card-content>
-    <p>Woojin Oh</p>
+    <p>
+      {{ activeUserName }}
+    </p>
   </mat-card-content>
 </mat-card>

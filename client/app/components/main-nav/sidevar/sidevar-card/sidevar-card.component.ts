@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidevar-card.component.css']
 })
 export class SidevarCardComponent implements OnInit {
+  activeUserName: string;
+  activeUserPicture: string;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    this.activeUserName = userData.firstName + ' ' + userData.lastName;
+    this.activeUserPicture = userData.picture;
   }
-
 }

@@ -55,6 +55,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { MyInfoComponent } from './components/user-menus/my-info/my-info.component';
 import { WageListOfStaffComponent } from './components/user-menus/wage-list-of-staff/wage-list-of-staff.component';
 import { PortalComponent } from './components/portal.component';
+import { LoadingSpinnerComponenr } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,8 @@ import { PortalComponent } from './components/portal.component';
     PageNotFoundComponent,
     MyInfoComponent,
     WageListOfStaffComponent,
-    PortalComponent
+    PortalComponent,
+    LoadingSpinnerComponenr
   ],
   imports: [
     BrowserModule,

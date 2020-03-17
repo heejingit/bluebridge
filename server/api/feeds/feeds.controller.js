@@ -4,66 +4,34 @@ require('../../models/feed');
 const mongoose = require('mongoose');
 const Feeds = mongoose.model('feed');
 
-// const feeds = [];
-
-// Feed.find({}, function (err, feedData) {
-//   if(err) return res.status(500).json(err);
-//   feeds.push(feedData);
-// })
-
-/*
-const feeds = [
-  {
-    author: 'Woojin Oh',
-    description:
-      'Due to the prior appointment set up, we had to change the schedule originally set up on Friday. It will happened next Monday. Thanks for your understanding.',
-    date: new Date(2020, 1, 26),
-    isHighPriority: true
-  },
-  {
-    author: 'Woojin Oh',
-    description:
-      "Management announced that they gave us a new garbage can! Don't throw your garbage on the floor anymore please!",
-    date: new Date(2020, 1, 17),
-    isHighPriority: false
-  },
-  {
-    author: 'Injun Hwang',
-    description: 'I have so many trash',
-    date: new Date(2020, 1, 10),
-    isHighPriority: false
-  },
-  {
-    author: 'Heejin Jeon',
-    description: 'I need some candy',
-    date: new Date(2020, 1, 15),
-    isHighPriority: false
-  },
-  {
-    author: 'John Doe',
-    description: 'Good morning',
-    date: new Date(2020, 2, 1),
-    isHighPriority: true
-  }
-];
-*/
-
 function listAllFeeds(req, res) {
   //retrive all feeds from the db
   Feeds.find({}, (err, feeds) => {
     if (err) return res.status(400).send('Error');
 
     res.send(feeds);
-    // feeds.push(feedData);
   });
-  // return res.json(feeds);
 }
 
-function create(req, res) {
-  const feed = req.body;
-  feeds.push(feed);
-  return res.json(feeds);
+function createFeed(req, res) {
+  const feed = new Feeds(req.body);
+
+  feed.save((err, result) => {
+    if (err) {
+      return res.status(400).send(err.message);
+    }
+    res.status(200).send(result);
+  });
+}
+
+function deleteFeed(req, res) {
+  Feeds.findOneAndDelete({ _id: req.params.id }, (err, feed) => {
+    if (err) return res.status(400).send('Error');
+    if (!feed) return res.status(404).send();
+
+    res.status(200).send();
+  });
 }
 
 // Any functions we create, we want to return these functions to the express app to use.
-module.exports = { listAllFeeds, create };
+module.exports = { listAllFeeds, createFeed, deleteFeed };

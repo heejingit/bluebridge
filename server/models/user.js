@@ -6,43 +6,50 @@ Joi.objectId = require('joi-objectid')(Joi);
 // const Schema = mongoose.Schema;
 
 const joiUserSchema = Joi.object({
-    _id: Joi.objectId().required(),
-    personalInfo: {
-        email: Joi.string().email().required(),
-        password: Joi.string().required(),
-        firstName: Joi.string().min(1).max(50).required(),
-        lastName: Joi.string().min(1).max(30).required(),
-        picture: Joi.string()
-    },
-    employeeInfo: {
-        department: Joi.string(),
-        position: Joi.string(),
-        hourlyWage: Joi.number(),
-        roles: Joi.array().items(Joi.objectId()),
-        workInfo: {
-          lastLoginTime: Joi.date(), 
-          lastLogoutTime: Joi.date(),
-          workTime: [
-            {
-              date: Joi.date(),
-              workStartTime: Joi.date(),
-              workFinishTime: Joi.date()
-            }
-          ]
+  _id: Joi.objectId().required(),
+  personalInfo: {
+    email: Joi.string()
+      .email()
+      .required(),
+    password: Joi.string().required(),
+    firstName: Joi.string()
+      .min(1)
+      .max(50)
+      .required(),
+    lastName: Joi.string()
+      .min(1)
+      .max(30)
+      .required(),
+    picture: Joi.string()
+  },
+  employeeInfo: {
+    department: Joi.string(),
+    position: Joi.string(),
+    hourlyWage: Joi.number(),
+    roles: Joi.array().items(Joi.objectId()),
+    workInfo: {
+      lastLoginTime: Joi.date(),
+      lastLogoutTime: Joi.date(),
+      workTime: [
+        {
+          date: Joi.date(),
+          workStartTime: Joi.date(),
+          workFinishTime: Joi.date()
         }
-      },
-      isLogin: Joi.boolean(),
-      condition: Joi.string(),
-      note: {                 // Personal note
-        description: Joi.string(),
-        date: Joi.date(),
-        isHighPriority: Joi.boolean()
-      }
-})
-
+      ]
+    }
+  },
+  isLogin: Joi.boolean(),
+  condition: Joi.string(),
+  note: {
+    // Personal note
+    description: Joi.string(),
+    date: Joi.date(),
+    isHighPriority: Joi.boolean()
+  }
+});
 
 const mongooseUserSchema = joigoose.convert(joiUserSchema);
-
 
 // const userSchema = new Schema({
 //     _id: ObjectId,
@@ -59,7 +66,7 @@ const mongooseUserSchema = joigoose.convert(joiUserSchema);
 //       hourlyWage: Number,
 //       roles: Array,
 //       workInfo: {
-//         lastLoginTime: Date, 
+//         lastLoginTime: Date,
 //         lastLogoutTime: Date,
 //         workTime: [
 //           {
@@ -78,5 +85,5 @@ const mongooseUserSchema = joigoose.convert(joiUserSchema);
 //       isHighPriority: Boolean
 //     }
 // });
-  
-module.exports = mongoose.model('User', mongooseUserSchema);
+
+module.exports = mongoose.model('User', mongooseUserSchema, 'user');

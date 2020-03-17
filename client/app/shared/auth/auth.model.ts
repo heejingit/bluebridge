@@ -1,7 +1,10 @@
-export class User {
+export class Auth {
   constructor(
+    public userID: string,
     public email: string,
-    // public id: string,
+    public firstName: string,
+    public lastName: string,
+    public picture: string,
     private _token: string,
     private _tokenExpirationDate: Date
   ) {}

@@ -1,22 +1,26 @@
-import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
-import { tap } from "rxjs/operators";
-import { HttpClient } from "@angular/common/http";
-import { Router } from "@angular/router";
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
-import { User } from "./user.model";
+import { Auth } from './auth.model';
 
 export interface AuthResponseData {
+  userID: string;
   email: string;
+  firstName: string;
+  lastName: string;
+  picture: string;
   token: string;
   expiresIn: string;
 }
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class AuthService {
-  user = new BehaviorSubject<User>(null);
+  user = new BehaviorSubject<Auth>(null);
   private tokenExpirationTimer: any;
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -25,14 +29,18 @@ export class AuthService {
 
   login(email: string, password: string) {
     return this.http
-      .post<AuthResponseData>("http://localhost:3000/api/users/login", {
+      .post<AuthResponseData>('http://localhost:3000/api/users/login', {
         email: email,
         password: password
       })
       .pipe(
         tap(resData => {
           this.handleAuthentication(
+            resData.userID,
             resData.email,
+            resData.firstName,
+            resData.lastName,
+            resData.picture,
             resData.token,
             +resData.expiresIn
           );
@@ -42,16 +50,24 @@ export class AuthService {
 
   autoLogin() {
     const userData: {
+      id: string;
       email: string;
+      firstName: string;
+      lastName: string;
+      picture: string;
       _token: string;
       _tokenExpirationDate: string;
-    } = JSON.parse(localStorage.getItem("userData"));
+    } = JSON.parse(localStorage.getItem('userData'));
     if (!userData) {
       return;
     }
 
-    const loadedUser = new User(
+    const loadedUser = new Auth(
+      userData.id,
       userData.email,
+      userData.firstName,
+      userData.lastName,
+      userData.picture,
       userData._token,
       new Date(userData._tokenExpirationDate)
     );
@@ -67,8 +83,8 @@ export class AuthService {
 
   logout() {
     this.user.next(null);
-    this.router.navigate(["/signin"]);
-    localStorage.removeItem("userData");
+    this.router.navigate(['/signin']);
+    localStorage.removeItem('userData');
     if (this.tokenExpirationTimer) {
       clearTimeout(this.tokenExpirationTimer);
     }
@@ -81,15 +97,27 @@ export class AuthService {
   }
 
   private handleAuthentication(
+    userID: string,
     email: string,
+    firstName: string,
+    lastName: string,
+    picture: string,
     token: string,
     expiresIn: number
   ) {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
 
-    const user = new User(email, token, expirationDate);
+    const user = new Auth(
+      userID,
+      email,
+      firstName,
+      lastName,
+      picture,
+      token,
+      expirationDate
+    );
     this.user.next(user);
     // this.autoLogout(expiresIn * 1000);
-    localStorage.setItem("userData", JSON.stringify(user));
+    localStorage.setItem('userData', JSON.stringify(user));
   }
 }

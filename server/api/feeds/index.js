@@ -1,7 +1,7 @@
-"use strict";
-const express = require("express");
+'use strict';
+const express = require('express');
 // Import the Controller so we may assign specific functions to a route
-const controller = require("./feeds.controller");
+const controller = require('./feeds.controller');
 
 // Assign the route variable to an Express.Route handler
 const router = express.Router();
@@ -11,14 +11,21 @@ const router = express.Router();
  * method: GET
  * function: listAllFeeds() in the feeds.controller.js file
  */
-router.get("/", controller.listAllFeeds);
+router.get('/', controller.listAllFeeds);
 
 /**
  * path: /api/feeds
  * method: POST
  * function: create() in the feeds.controller.js file
  */
-router.post("/", controller.create);
+router.post('/', controller.createFeed);
+
+/**
+ * path: /api/feeds/:id
+ * method: DELETE
+ * function: update() in the feeds.controller.js file
+ */
+router.delete('/:id', controller.deleteFeed);
 
 // We export the routes to the express app, in the routes.js file we will assign the base URL for this endpoint.
 // in this file we simply want to specify the path after the base /api/users url.

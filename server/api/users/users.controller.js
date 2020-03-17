@@ -7,38 +7,12 @@ const Users = mongoose.model('User');
 
 const jwt = require('jsonwebtoken');
 
-const users = [
-  {
-    _id: '5e6515c2fc13ae3c1600049a',
-    email: 'woojin@nscc.ca',
-    password: 'password',
-    firstName: 'Woojin',
-    lastName: 'Oh'
-  },
-  {
-    _id: '5e6515c2fc13ae3c16000549',
-    email: 'injun@nscc.ca',
-    password: 'password',
-    firstName: 'Injun',
-    lastName: 'Hwang'
-  },
-  {
-    _id: '5e6515c2fc13ae3c160004b9',
-    email: 'heejin@nscc.ca',
-    password: 'password',
-    firstName: 'Heejin',
-    lastName: 'Jeon'
-  }
-];
-
 function listAllUsers(req, res) {
-  // Users.find({}, (err, users) => {
-  //   if (err) return res.status(400).send('Error');
-
-  //   res.send(users);
-  //   // feeds.push(feedData);
-  // });
-  return res.json(users);
+  Users.find({}, (err, users) => {
+    if (err) return res.status(400).send('Error');
+    res.send(users);
+  });
+  // return res.json(users);
 }
 
 function findUserByEmail(req, res, next) {
@@ -59,20 +33,29 @@ function login(req, res) {
     password: req.body.password
   };
 
-  let user = users.find(user => user.email == login.email);
-  if (!user) {
-    return res.json({ success: false, message: 'email or password incorrect' });
-  }
-
-  if (user.password == login.password) {
-    sendToken(user, res);
-  }
+  Users.findOne({ 'personalInfo.email': login.email }, (err, user) => {
+    if (!user) {
+      return res.json({
+        success: false,
+        message: 'email or password incorrect'
+      });
+    } else {
+      if (user.personalInfo.password !== login.password) {
+        return res.status(401).send('wrong password');
+      }
+      sendToken(user, res);
+    }
+  });
 }
 
 function sendToken(user, res) {
-  var token = jwt.sign({ userId: user.id }, '123');
+  const token = jwt.sign({ userID: user._id }, '123');
   res.json({
-    email: user.email,
+    userID: user._id,
+    email: user.personalInfo.email,
+    firstName: user.personalInfo.firstName,
+    lastName: user.personalInfo.lastName,
+    picture: user.personalInfo.picture,
     token: token,
     expiresIn: 3600
   });
