@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy, OnInit, ViewChild, TemplateRef } fr
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import { Schedule } from '../../../../../../shared/schedule.model';
 import { ScheduleService } from '../../../../../../shared/schedule.service';
+import { UserService } from '../../../../../../shared/user.service';
 import { DataStorageService } from '../../../../../../shared/data-storage.service';
 
 import {
@@ -86,7 +87,8 @@ export class CalendarMainComponent implements OnInit {
 
   constructor(
     private dataStorageService: DataStorageService,
-    private ScheduleService: ScheduleService
+    private ScheduleService: ScheduleService,
+    private UserService: UserService
     ) { }
 
   ngOnInit() {
@@ -99,7 +101,9 @@ export class CalendarMainComponent implements OnInit {
      let editedSchedule;
 
      if (schedule.type === "meeting") setColor = colors.red;
-     if (schedule.type === "vacation") setColor = colors.blue;
+     if (schedule.type === "vacation") {
+       setColor = colors.blue;
+     }
      if (schedule.type === "event") setColor = colors.yellow;
 
      editedSchedule = {
