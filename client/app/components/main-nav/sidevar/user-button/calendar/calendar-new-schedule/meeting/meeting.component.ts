@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../../../../../../shared/user.model';
+import { UserService } from '../../../../../../../shared/user.service';
+import { Observable } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import {map, startWith} from 'rxjs/operators';
 
 interface departments {
   value: number;
@@ -11,6 +16,10 @@ interface departments {
   styleUrls: ['./meeting.component.css']
 })
 export class MeetingComponent implements OnInit {
+  users: any;
+  userList: any;
+  myControl = new FormControl();
+  filteredOptions: Observable<User>;
   people: any[] = [];
   departments = [
     {value: 0, viewValue: ''},
@@ -23,9 +32,31 @@ export class MeetingComponent implements OnInit {
   departmentName: string = '';
 
 
-  constructor() { }
+  constructor(private UserSerivce: UserService) { }
 
   ngOnInit(): void {
+    this.users = this.UserSerivce.getUsers();
+
+    console.log(this.users);
+
+    this.userList = this.users.map(user => user.personalInfo.firstName + " " + user.personalInfo.lastName);
+
+    this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => typeof value === 'string' ? value : value),
+        map(name => name ? this._filter(name) : this.userList.slice())
+      );
+  }
+
+  displayFn(user: User): string {
+    return user && user.firstName + " " + user.lastName ? user.firstName + " " + user.lastName : '';
+  }
+
+  private _filter(name: string): User[] {
+    const filterValue = name.toLowerCase();
+
+    return this.userList.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
   }
 
   onInvite(event: any) {

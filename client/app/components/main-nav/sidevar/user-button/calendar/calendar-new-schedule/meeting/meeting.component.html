@@ -13,7 +13,12 @@
             <mat-card class="parti-container" fxFlex="50">
                 <mat-form-field appearance="fill" class="participants">
                     <mat-label>Participants</mat-label>
-                    <input matInput placeholder="Please enter a participant's name" [(ngModel)]="personName" name="personName">
+                    <input matInput placeholder="Please enter a participant's name" [(ngModel)]="personName" name="personName" [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option}}
+                      </mat-option>
+                    </mat-autocomplete>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill" class="participants">

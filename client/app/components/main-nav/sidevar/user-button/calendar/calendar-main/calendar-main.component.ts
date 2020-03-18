@@ -71,37 +71,7 @@ export class CalendarMainComponent implements OnInit {
 
   isEvent: boolean = false;
 
-  events: CalendarEvent[] = [
-    // {
-    //   title: 'Heejin Jeon on Vacation',
-    //   color: colors.blue,
-    //   start: new Date("February 13, 2020")
-    // },
-
-    // {
-    //   title: 'Woojin Oh on Vacation',
-    //   color: colors.blue,
-    //   start: new Date("February 14, 2020")
-    // },
-
-    // {
-    //   title: 'Injun Hwang on Vacation',
-    //   color: colors.blue,
-    //   start: new Date("February 18, 2020")
-    // },
-
-    // {
-    //   title: 'Web Development meeting at 9:30AM (Click to view all the participants)',
-    //   color: colors.red,
-    //   start: new Date("February 13, 2020")
-    // },
-
-    {
-      title: 'Tour event with university students',
-      color: colors.yellow,
-      start: new Date("2020-03-09T00:00:00.000Z")
-    }
-  ];
+  events: CalendarEvent[] = [];
 
   constructor(
     private dataStorageService: DataStorageService,
@@ -159,23 +129,18 @@ export class CalendarMainComponent implements OnInit {
   }
 
   eventClicked({ event }: { event: CalendarEvent }): void {
-    console.log('Event clicked', event);
     this.eventData = event;
     this.dialog_eventData = event;
-    console.log(this.dialog_eventData);
     
     if(this.eventData.user) {
       const matchedUser = this.eventData.user.map(userid => {
         return this.allUsers.filter(user => user._id === userid)
       })
 
-      console.log(matchedUser);
-
       this.dialog_matchedUser = matchedUser.map(user => {
         return user[0].personalInfo.firstName + " " + user[0].personalInfo.lastName
       })
 
-      console.log(this.dialog_matchedUser);
     }
 
     const dialogRef = this.dialog.open(ScheduleDetailDialog, {
