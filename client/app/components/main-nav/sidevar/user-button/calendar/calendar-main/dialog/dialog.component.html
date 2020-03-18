@@ -4,7 +4,9 @@
   <p><b>Title:</b> {{data.eventData.title}}</p>
   <p><b>Description:</b> {{data.eventData.description}}</p>
   <p><b>Date:</b> {{data.eventData.start}}</p>
-  <p><b>Participant(s):</b> {{data.users}}</p>
+  <div *ngIf="!data.eventData.isEvent">
+    <p ><b>Participant(s):</b> {{data.users}}</p>
+  </div>
 </div>
 <div mat-dialog-actions>
   <button mat-button color="primary" cdkFocusInitial (click)="onNoClick()">Ok</button>

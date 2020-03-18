@@ -69,6 +69,8 @@ export class CalendarMainComponent implements OnInit {
 
   viewDate: Date = new Date();
 
+  isEvent: boolean = false;
+
   events: CalendarEvent[] = [
     // {
     //   title: 'Heejin Jeon on Vacation',
@@ -116,10 +118,11 @@ export class CalendarMainComponent implements OnInit {
     schedules.map(schedule => {
      let setColor;
      let editedSchedule;
+     let setType;
 
-     if (schedule.type === "meeting") setColor = colors.red;
-     if (schedule.type === "vacation") setColor = colors.blue;
-     if (schedule.type === "event") setColor = colors.yellow;
+     if (schedule.type === "meeting") setColor = colors.red, setType = "Meeting";
+     if (schedule.type === "vacation") setColor = colors.blue, setType = "Vacation";
+     if (schedule.type === "event") setColor = colors.yellow, setType = "Event", this.isEvent = true;
 
      editedSchedule = {
        title: schedule.title,
@@ -128,7 +131,8 @@ export class CalendarMainComponent implements OnInit {
        start: new Date(schedule.startDate),
        end: new Date(schedule.endDate),
        user: schedule.user,
-       type: schedule.type
+       type: setType,
+       isEvent: this.isEvent
      }
 
      return this.events.push(editedSchedule);
