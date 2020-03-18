@@ -127,7 +127,8 @@ export class CalendarMainComponent implements OnInit {
        color: setColor,
        start: new Date(schedule.startDate),
        end: new Date(schedule.endDate),
-       user: schedule.user
+       user: schedule.user,
+       type: schedule.type
      }
 
      return this.events.push(editedSchedule);
