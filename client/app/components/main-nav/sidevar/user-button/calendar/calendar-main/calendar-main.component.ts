@@ -1,9 +1,11 @@
-import { Component, ChangeDetectionStrategy, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, ViewChild, TemplateRef, Inject } from '@angular/core';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Schedule } from '../../../../../../shared/schedule.model';
 import { ScheduleService } from '../../../../../../shared/schedule.service';
 import { UserService } from '../../../../../../shared/user.service';
 import { DataStorageService } from '../../../../../../shared/data-storage.service';
+import { ScheduleDetailDialog } from './dialog/dialog.component';
 
 import {
   startOfDay,
@@ -23,6 +25,11 @@ import {
   CalendarView
 } from 'angular-calendar';
 
+export interface DialogData {
+  dialog_eventData: any;
+  dialog_matchedUser: Array<string>; 
+}
+
 const colors: any = {
   red: {
     primary: '#ad2121',
@@ -38,6 +45,7 @@ const colors: any = {
   }
 };
 
+
 @Component({
   selector: 'app-calendar-main',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -45,6 +53,14 @@ const colors: any = {
   styleUrls: ['./calendar-main.component.css']
 })
 export class CalendarMainComponent implements OnInit {
+  allUsers: any = this.UserService.getUsers();
+
+  dialog_eventData: any;
+
+  dialog_matchedUser: Array<string>;
+
+  eventData: any;
+
   schedules: Schedule[];
 
   view: CalendarView = CalendarView.Month;
@@ -88,7 +104,8 @@ export class CalendarMainComponent implements OnInit {
   constructor(
     private dataStorageService: DataStorageService,
     private ScheduleService: ScheduleService,
-    private UserService: UserService
+    private UserService: UserService,
+    public dialog: MatDialog
     ) { }
 
   ngOnInit() {
@@ -101,15 +118,16 @@ export class CalendarMainComponent implements OnInit {
      let editedSchedule;
 
      if (schedule.type === "meeting") setColor = colors.red;
-     if (schedule.type === "vacation") {
-       setColor = colors.blue;
-     }
+     if (schedule.type === "vacation") setColor = colors.blue;
      if (schedule.type === "event") setColor = colors.yellow;
 
      editedSchedule = {
        title: schedule.title,
+       description: schedule.description,
        color: setColor,
-       start: new Date(schedule.startDate)
+       start: new Date(schedule.startDate),
+       end: new Date(schedule.endDate),
+       user: schedule.user
      }
 
      return this.events.push(editedSchedule);
@@ -134,6 +152,37 @@ export class CalendarMainComponent implements OnInit {
       }
     }
   }
+
+  eventClicked({ event }: { event: CalendarEvent }): void {
+    console.log('Event clicked', event);
+    this.eventData = event;
+    this.dialog_eventData = event;
+    console.log(this.dialog_eventData);
+    
+    if(this.eventData.user) {
+      const matchedUser = this.eventData.user.map(userid => {
+        return this.allUsers.filter(user => user._id === userid)
+      })
+
+      console.log(matchedUser);
+
+      this.dialog_matchedUser = matchedUser.map(user => {
+        return user[0].personalInfo.firstName + " " + user[0].personalInfo.lastName
+      })
+
+      console.log(this.dialog_matchedUser);
+    }
+
+    const dialogRef = this.dialog.open(ScheduleDetailDialog, {
+      width: '500px',
+      data: {eventData: this.dialog_eventData, users: this.dialog_matchedUser}
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('The dialog was closed');
+    });
+  }
+
 
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
