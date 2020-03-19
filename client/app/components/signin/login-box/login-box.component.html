@@ -1,0 +1,48 @@
+<div class="signin-content">
+  <mat-card>
+    <mat-card-content>
+      <h5 class="mat-h5">Welcome to Blue Bridge</h5>
+      <h3 class="mat-h3">LOGIN</h3>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <!-- Email -->
+        <div class="email-area">
+          <mat-icon>face</mat-icon>
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              type="email"
+              placeholder="Email"
+              formControlName="email"
+              required
+            />
+            <mat-error *ngIf="isFieldInvalid('email')">
+              Please enter your email
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Password -->
+        <div class="pwd-area">
+          <br /><mat-icon>lock</mat-icon>
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              type="password"
+              placeholder="Password"
+              formControlName="password"
+              required
+            />
+            <mat-error *ngIf="isFieldInvalid('password')">
+              Please enter your password
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button color="primary">Sign In</button>
+      </form>
+      <h5 class="mat-h5-2" routerLink="/register">
+        Are you new?
+      </h5>
+    </mat-card-content>
+  </mat-card>
+</div>

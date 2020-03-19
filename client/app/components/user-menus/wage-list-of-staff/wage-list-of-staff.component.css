@@ -1,0 +1,50 @@
+.header {
+    margin-top: 30px;
+    margin-left: 50px;
+    letter-spacing: 0.14em;
+}
+table {
+  width: 100%;
+    border-collapse: separate;
+    border-spacing: 50px 0;
+}
+
+.mat-form-field {
+    padding-left: 50px;
+    padding-top: 30px;
+    font-size: 14px;
+    width: 50%;
+}
+.mat-row {
+    height: auto;
+}
+  
+.table-area {
+    margin-top: 30px;
+}
+
+.mat-badge-content {
+    background: #4CAF50 !important;
+    margin-left: -20px;
+}
+
+.wagelist-card {
+    max-width: 100%;
+    margin: auto;
+  }
+
+.mat-cell {
+    padding: 40px 60px 40px 0;
+}
+
+.mat-card-avatar {
+    background-image: url('/assets/img/avataaars.png');
+    background-size: cover;
+    min-width: 50px;
+    min-height: 100px;
+    width: 90%;
+    margin: auto;
+    border: 1px solid #3F51B5;
+    border-radius:50%;
+    -moz-border-radius:50%;
+}

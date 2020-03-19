@@ -1,0 +1,63 @@
+<div *ngIf="isLoading" style="text-align: center;">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+<div *ngIf="!isLoading">
+  <div *ngFor="let feed of feeds; let i = index">
+    <mat-card>
+      <mat-card-title>
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <div fxFlex="95%" fxFlex.xs="90%">
+            <!-- <span [ngClass]="{'font-red': feed.highPriority}">{{ feed.title }}</span> -->
+            <span class="feed-notice" *ngIf="feed.isHighPriority"
+              >[Notice]
+            </span>
+            <span class="feed-description">{{ feed.description }}</span>
+          </div>
+          <div fxFlex="5%" fxFlex.xs="10%" *ngIf="authCheck(feed)">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>edit</mat-icon>
+                <span>Edit</span>
+              </button>
+              <button mat-menu-item (click)="onFeedDelete(feed)">
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
+              </button>
+            </mat-menu>
+          </div>
+        </div>
+      </mat-card-title>
+      <mat-card-content>
+        <div fxLayout="row" fxLayoutAlign="spcae-between start">
+          <div fxFlex="15%" fxFlex.xs="20%">
+            <p>{{ feed.date | date: 'mediumDate' }}</p>
+          </div>
+          <div fxFlex="55%" fxFlex.xs="25%"></div>
+          <div fxFlex="15%" fxFlex.xs="30%">
+            <!-- !!!!!!!! need to change later !!!!!!! -->
+            <div
+              mat-card-avatar
+              matBadge="{{ feed.isLogin ? 'on' : 'off' }}"
+              matBadgePosition="below after"
+              matBadgeOverlap="true"
+              [ngStyle]="{
+                'background-image':
+                  'url(/assets/img/avatar/' + feed.avatar + '.png)'
+              }"
+              [ngClass]="{
+                off: !feed.isLogin
+              }"
+            ></div>
+          </div>
+          <div fxFlex="15%" fxFlex.xs="25%">
+            <p>{{ feed.authorName }}</p>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+    </mat-card>
+  </div>
+</div>

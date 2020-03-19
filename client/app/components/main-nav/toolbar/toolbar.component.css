@@ -1,0 +1,31 @@
+.mat-toolbar {
+  background-color: white;
+  width: 80%;
+  margin: auto;
+  /* fixed top toolbar */
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+.mat-toolbar-row {
+  padding: 0px !important;
+}
+
+.margin-right-15 {
+  margin-right: 15px;
+}
+
+.work-hour {
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.x-auto-margin {
+  margin: 0px auto;
+}

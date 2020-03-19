@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-button {
+    margin-top: 11px;
+}
+
+.given-role {
+    margin-top: 50px;
+}
+
+.role-button-section {
+    margin: 30px auto auto 140px;
+}
+
+.mat-raised-button {
+    margin: 5px;
+}

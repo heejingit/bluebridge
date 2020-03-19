@@ -1,0 +1,63 @@
+<div class="header" fxLayout="row" fxLayoutAlign="start start">
+  <div fxFlex="40">
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle 
+        value="previous"
+        mwlCalendarPreviousView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        (viewDateChange)="closeOpenMonthViewDay()"
+      >
+      Previous month
+    </mat-button-toggle>
+
+      <mat-button-toggle 
+        value="next"
+        mwlCalendarNextView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        (viewDateChange)="closeOpenMonthViewDay()"
+      >
+        Next month
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <div fxFlex="60">
+    <h1>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h1>
+  </div>
+
+  <div fxFlex="20">
+    <button
+      mat-stroked-button
+      color="primary"
+      routerLink="/portal/calendar-new"
+    >
+      Add a new schedule
+    </button>
+  </div>
+</div>
+
+<div class="options" fxLayout="row" fxLayoutAlign="start start">
+  <div fxFlex="10"><span class="dot-meeting"></span> Meeting</div>
+
+  <div fxFlex="10"><span class="dot-vacation"></span> Vacation</div>
+
+  <div fxFlex="10"><span class="dot-event"></span> Event</div>
+</div>
+
+
+
+
+
+<!-- Main Calendar -->
+<div class="calendar-area">
+    <mwl-calendar-month-view
+    [viewDate]="viewDate"
+    [events]="events"
+    [activeDayIsOpen]="activeDayIsOpen"
+    (dayClicked)="dayClicked($event.day)"
+    (eventClicked)="eventClicked($event)"
+    >
+  </mwl-calendar-month-view>
+</div>

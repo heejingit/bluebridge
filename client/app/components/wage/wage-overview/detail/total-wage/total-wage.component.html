@@ -1,0 +1,133 @@
+<mat-divider></mat-divider>
+<div class="container">
+  <p>Gross Total: $ {{ totalHoursFloat * hourlyWage | number: "1.2-2" }}</p>
+  <form [formGroup]="wageForm" (ngSubmit)="onWageSubmit()">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div fxFlex="25%" fxFlex.xs="20%"></div>
+      <div fxFlex="35%" fxFlex.xs="35%" class="vertical-align-center">
+        <label class="sub-label">Hourly Wage</label>
+      </div>
+      <div fxFlex="25%" fxFlex.xs="25%">
+        <mat-form-field class="mat-form-field">
+          <input
+            matInput
+            placeholder="Input the hourly wage"
+            value="{{ hourlyWage }}"
+            formControlName="hourlyWage"
+          />
+        </mat-form-field>
+      </div>
+      <div fxFlex="15%" fxFlex.xs="20%" class="vertical-align-center">
+        <button
+          mat-raised-button
+          color="primary"
+          class="sub-button"
+          type="submit"
+        >
+          Apply
+        </button>
+      </div>
+    </div>
+  </form>
+  <form [formGroup]="taxForm" (ngSubmit)="onTaxSubmit()">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div fxFlex="25%" fxFlex.xs="20%"></div>
+      <div fxFlex="35%" fxFlex.xs="35%" class="vertical-align-center">
+        <label class="sub-label">Tax</label>
+      </div>
+      <div fxFlex="25%" fxFlex.xs="25%">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Input the amount of Tax"
+            value="{{ tax }}"
+            formControlName="tax"
+          />
+        </mat-form-field>
+      </div>
+      <div fxFlex="15%" fxFlex.xs="20%" class="vertical-align-center">
+        <button
+          mat-raised-button
+          color="primary"
+          class="sub-button"
+          type="submit"
+        >
+          Apply
+        </button>
+      </div>
+    </div>
+  </form>
+  <form [formGroup]="deductionsForm" (ngSubmit)="onDeductionsSubmit()">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div fxFlex="25%" fxFlex.xs="20%" class="vertical-align-center">
+        <label class="sub-label">Additional Deductions</label>
+      </div>
+      <div fxFlex="35%" fxFlex.xs="35%">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Input the reason"
+            value=""
+            formControlName="reason"
+          />
+        </mat-form-field>
+      </div>
+      <div fxFlex="25%" fxFlex.xs="25%">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Input the amount"
+            value=""
+            formControlName="amount"
+          />
+        </mat-form-field>
+      </div>
+      <div fxFlex="15%" fxFlex.xs="20%" class="vertical-align-center">
+        <button
+          mat-raised-button
+          color="primary"
+          class="sub-button"
+          type="submit"
+        >
+          Apply
+        </button>
+      </div>
+    </div>
+  </form>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex="24%" fxFlex.xs="20%"></div>
+    <div fxFlex="76%" fxFlex.xs="80%">
+      <mat-card class="float-right">
+        <div class="align=left" *ngIf="!deductions.length">
+          <p>No Deduction</p>
+        </div>
+        <div
+          fxLayout="row wrap"
+          fxLayoutAlign="start start"
+          *ngFor="let deduction of deductions; let i = index"
+          index="i"
+        >
+          <div fxFlex="60%" class="align-left">
+            <p>{{ deduction.reason }}</p>
+          </div>
+          <div fxFlex="20%">
+            <p>${{ deduction.amount | number: "1.2-2" }}</p>
+          </div>
+          <div fxFlex="20%" class="remove-button">
+            <i class="material-icons" (click)="onRemoveDeduction(i)">cancel</i>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+  <div>
+    <p>
+      Net Total : ${{
+        totalHoursFloat * hourlyWage * (1 - tax * 0.01) - totalDeductions
+          | number: "1.2-2"
+      }}
+    </p>
+  </div>
+</div>

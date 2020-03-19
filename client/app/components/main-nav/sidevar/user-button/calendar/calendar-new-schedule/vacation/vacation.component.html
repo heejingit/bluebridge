@@ -1,0 +1,40 @@
+<div class="container">
+    <form class="meeting-form">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Description</mat-label>
+          <input matInput placeholder="" value="">
+        </mat-form-field>
+
+        <div
+            class="header"
+            fxLayout="row"
+            fxLayoutAlign="start start">
+
+            <div class="parti-container" fxFlex="47">
+                <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Start date</mat-label>
+                    <input matInput [matDatepicker]="vacationPickerStart">
+                    <mat-datepicker-toggle matSuffix [for]="vacationPickerStart">
+                      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #vacationPickerStart></mat-datepicker>
+                </mat-form-field>
+            </div>
+            
+            <div class="parti-container" fxFlex="46.5">
+                <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>End date</mat-label>
+                    <input matInput [matDatepicker]="vacationPickerEnd">
+                    <mat-datepicker-toggle matSuffix [for]="vacationPickerEnd">
+                      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #vacationPickerEnd></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+        </div>
+
+        <p class="apply-btn-p"><button mat-raised-button color="primary" class="apply-btn">Apply</button></p>
+      </form>
+
+</div>

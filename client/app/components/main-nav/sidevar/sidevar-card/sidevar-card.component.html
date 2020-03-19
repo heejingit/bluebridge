@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-header>
+    <div
+      mat-card-avatar
+      matBadge="on"
+      matBadgePosition="below after"
+      matBadgeOverlap="true"
+      [ngStyle]="{
+        'background-image':
+          'url(/assets/img/avatar/' + activeUserPicture + '.png)'
+      }"
+    ></div>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      {{ activeUserName }}
+    </p>
+  </mat-card-content>
+</mat-card>
