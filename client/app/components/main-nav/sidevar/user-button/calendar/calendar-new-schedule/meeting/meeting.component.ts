@@ -10,6 +10,11 @@ interface departments {
   viewValue: string;
 }
 
+interface userList {
+  name: string;
+  department: string;
+}
+
 @Component({
   selector: 'app-meeting',
   templateUrl: './meeting.component.html',
@@ -39,24 +44,35 @@ export class MeetingComponent implements OnInit {
 
     console.log(this.users);
 
-    this.userList = this.users.map(user => user.personalInfo.firstName + " " + user.personalInfo.lastName);
+    this.userList = this.users.map(user => {
+      return {
+      name: user.personalInfo.firstName + " " + user.personalInfo.lastName,
+      department: user.employeeInfo.department
+      }
+    });
+
+    console.log(this.userList);
+
+    const departmentList = this.userList.map(user => {
+      return {
+        viewValue: user.department
+      }
+    })
+
+    console.log(departmentList);
 
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
-        map(value => typeof value === 'string' ? value : value),
-        map(name => name ? this._filter(name) : this.userList.slice())
+        map(value => typeof value === 'string' ? value : value.name),
+        map(option => option ? this._filter(option) : this.userList.slice())
       );
   }
 
-  displayFn(user: User): string {
-    return user && user.firstName + " " + user.lastName ? user.firstName + " " + user.lastName : '';
-  }
-
-  private _filter(name: string): User[] {
+  private _filter(name: string): string[] {
     const filterValue = name.toLowerCase();
 
-    return this.userList.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+    return this.userList.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
   }
 
   onInvite(event: any) {
